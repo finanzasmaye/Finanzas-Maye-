@@ -10,41 +10,26 @@
         body {
             font-family: 'DM Sans', sans-serif;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            min-height: 100vh;
-            padding: 15px;
-            color: #e2e8f0;
+            min-height: 100vh; padding: 15px; color: #e2e8f0;
         }
         .container { max-width: 1200px; margin: 0 auto; }
         h1, h2, h3 { font-family: 'Outfit', sans-serif; }
-
         .header {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 25px;
-            border-radius: 16px;
-            margin-bottom: 20px;
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1); padding: 25px; border-radius: 16px; margin-bottom: 20px;
         }
-        .header-top {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 15px; flex-wrap: wrap; gap: 15px;
-        }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 15px; }
         .header h1 { font-size: 28px; color: #f8fafc; font-weight: 800; }
         .header p { font-size: 13px; color: #94a3b8; }
         .mes-selector { display: flex; gap: 4px; flex-wrap: wrap; }
         .mes-btn {
-            padding: 6px 10px; border: 1px solid rgba(255,255,255,0.15);
-            background: transparent; color: #94a3b8; border-radius: 6px;
-            cursor: pointer; font-weight: 600; font-size: 11px; transition: all 0.3s;
-            font-family: 'DM Sans', sans-serif;
+            padding: 6px 10px; border: 1px solid rgba(255,255,255,0.15); background: transparent;
+            color: #94a3b8; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 11px;
+            transition: all 0.3s; font-family: 'DM Sans', sans-serif;
         }
         .mes-btn.activo { background: #6366f1; color: white; border-color: #6366f1; }
         .mes-btn:hover { border-color: #6366f1; color: #c7d2fe; }
-
-        /* Action buttons row */
-        .action-row {
-            display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
-        }
+        .action-row { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         .action-btn {
             padding: 10px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
             background: rgba(255,255,255,0.05); color: #e2e8f0; cursor: pointer;
@@ -56,8 +41,6 @@
         .action-btn.primary:hover { background: #4f46e5; }
         .action-btn.green { background: #059669; border-color: #059669; color: white; }
         .action-btn.green:hover { background: #047857; }
-
-        /* Metrics */
         .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px; }
         .metric-card {
             background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);
@@ -65,12 +48,7 @@
         }
         .metric-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
         .metric-value { font-size: 26px; font-weight: 700; color: #f8fafc; font-family: 'Outfit', sans-serif; }
-        .metric-value.green { color: #34d399; }
-        .metric-value.red { color: #f87171; }
-        .metric-value.blue { color: #818cf8; }
         .metric-subtext { font-size: 11px; color: #64748b; margin-top: 4px; }
-
-        /* Progress */
         .progress-container {
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
             padding: 20px; border-radius: 12px; margin-bottom: 20px;
@@ -78,27 +56,10 @@
         .progress-label { font-size: 13px; font-weight: 600; color: #cbd5e1; margin-bottom: 12px; }
         .progress-bar { width: 100%; height: 24px; background: rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; }
         .progress-fill {
-            height: 100%; background: linear-gradient(90deg, #6366f1, #a78bfa);
-            border-radius: 12px; transition: width 0.5s ease;
-            display: flex; align-items: center; justify-content: center;
+            height: 100%; background: linear-gradient(90deg, #6366f1, #a78bfa); border-radius: 12px;
+            transition: width 0.5s ease; display: flex; align-items: center; justify-content: center;
             color: white; font-weight: 700; font-size: 11px;
         }
-
-        /* Categories */
-        .section-title { color: #f1f5f9; margin-bottom: 15px; font-size: 20px; font-weight: 700; }
-        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 25px; }
-        .category-card {
-            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
-            padding: 15px; border-radius: 10px; cursor: pointer; transition: all 0.3s;
-        }
-        .category-card:hover { transform: translateY(-3px); border-color: #6366f1; background: rgba(99,102,241,0.1); }
-        .category-name { font-size: 12px; font-weight: 600; color: #cbd5e1; margin-bottom: 6px; }
-        .category-amount { font-size: 17px; font-weight: 700; color: #f8fafc; margin-bottom: 8px; font-family: 'Outfit', sans-serif; }
-        .category-progress { width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; margin-bottom: 4px; }
-        .category-progress-fill { height: 100%; border-radius: 2px; transition: width 0.5s; }
-        .category-percentage { font-size: 10px; color: #64748b; }
-
-        /* Ingresos & Deudas section */
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-bottom: 25px; }
         .info-card {
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
@@ -118,17 +79,27 @@
         }
         .info-total-label { font-size: 14px; font-weight: 700; color: #cbd5e1; }
         .info-total-value { font-size: 18px; font-weight: 700; font-family: 'Outfit', sans-serif; }
-
-        /* Modal */
+        .section-title { color: #f1f5f9; margin-bottom: 15px; font-size: 20px; font-weight: 700; }
+        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 25px; }
+        .category-card {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+            padding: 15px; border-radius: 10px; cursor: pointer; transition: all 0.3s;
+        }
+        .category-card:hover { transform: translateY(-3px); border-color: #6366f1; background: rgba(99,102,241,0.1); }
+        .category-name { font-size: 12px; font-weight: 600; color: #cbd5e1; margin-bottom: 6px; }
+        .category-amount { font-size: 17px; font-weight: 700; color: #f8fafc; margin-bottom: 8px; font-family: 'Outfit', sans-serif; }
+        .category-progress { width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; margin-bottom: 4px; }
+        .category-progress-fill { height: 100%; border-radius: 2px; transition: width 0.5s; }
+        .category-percentage { font-size: 10px; color: #64748b; }
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.7); z-index: 1000; backdrop-filter: blur(4px);
         }
         .modal-overlay.activo { display: flex; align-items: center; justify-content: center; }
         .modal {
-            background: #1e293b; border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px; padding: 25px; max-width: 500px; width: 90%;
-            max-height: 80vh; overflow-y: auto; box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;
+            padding: 25px; max-width: 500px; width: 90%; max-height: 85vh; overflow-y: auto;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
         }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .modal-header h2 { font-size: 18px; color: #f1f5f9; }
@@ -146,9 +117,14 @@
             padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 6px;
         }
         .modal-item-desc { font-size: 12px; color: #94a3b8; }
-        .modal-item-monto { font-size: 13px; font-weight: 600; color: #c7d2fe; }
-
-        /* Form */
+        .modal-item-monto { font-size: 13px; font-weight: 600; color: #c7d2fe; white-space: nowrap; }
+        .modal-item-actions { display: flex; gap: 6px; margin-left: 8px; }
+        .btn-edit, .btn-delete {
+            background: none; border: none; cursor: pointer; font-size: 14px; padding: 4px;
+            border-radius: 4px; transition: all 0.2s;
+        }
+        .btn-edit:hover { background: rgba(99,102,241,0.2); }
+        .btn-delete:hover { background: rgba(239,68,68,0.2); }
         .form-group { margin-bottom: 14px; }
         .form-group label { display: block; font-size: 12px; font-weight: 600; color: #94a3b8; margin-bottom: 5px; }
         .form-group input, .form-group select {
@@ -166,18 +142,12 @@
         .btn-submit:hover { background: #4f46e5; }
         .btn-submit.green { background: #059669; }
         .btn-submit.green:hover { background: #047857; }
-        .btn-submit.red { background: #dc2626; }
-        .btn-submit.red:hover { background: #b91c1c; }
-
-        /* Toast */
         .toast {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
             background: #059669; color: white; padding: 12px 24px; border-radius: 10px;
             font-weight: 600; font-size: 14px; z-index: 2000; display: none;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-
-        /* Responsive */
         @media (max-width: 600px) {
             .header h1 { font-size: 22px; }
             .metric-value { font-size: 22px; }
@@ -195,82 +165,57 @@
             </div>
             <p>Tu asistente inteligente de control de gastos y ahorros</p>
         </div>
-
-        <!-- Action Buttons -->
         <div class="action-row">
             <button class="action-btn primary" onclick="abrirFormulario()">➕ Registrar Gasto</button>
             <button class="action-btn green" onclick="abrirFormIngreso()">💵 Agregar Ingreso</button>
-            <button class="action-btn" onclick="abrirFormDeuda()">💳 Registrar Deuda</button>
             <button class="action-btn" onclick="descargarInforme()">📊 Descargar Informe</button>
         </div>
-
-        <!-- Metrics -->
         <div class="metrics">
             <div class="metric-card">
                 <div class="metric-label">Total Ingresos</div>
-                <div class="metric-value green" id="total-ingresos">$0</div>
-                <div class="metric-subtext" id="ingresos-subtext">Salario + otros</div>
+                <div class="metric-value" id="total-ingresos" style="color:#34d399;">$0</div>
+                <div class="metric-subtext">Salario + otros ingresos</div>
             </div>
             <div class="metric-card">
                 <div class="metric-label">Total Gastado</div>
-                <div class="metric-value red" id="total-gastado">$0</div>
+                <div class="metric-value" id="total-gastado" style="color:#f87171;">$0</div>
                 <div class="metric-subtext" id="total-subtext">de $0</div>
             </div>
             <div class="metric-card">
-                <div class="metric-label">Deudas del Mes</div>
-                <div class="metric-value" id="total-deudas" style="color:#fbbf24;">$0</div>
-                <div class="metric-subtext" id="deudas-subtext">Pagos pendientes</div>
-            </div>
-            <div class="metric-card">
                 <div class="metric-label">Disponible</div>
-                <div class="metric-value blue" id="ahorro-acumulado">$0</div>
-                <div class="metric-subtext" id="ahorro-status">Ingresos - Gastos - Deudas</div>
+                <div class="metric-value" id="ahorro-acumulado" style="color:#818cf8;">$0</div>
+                <div class="metric-subtext">Ingresos - Gastos</div>
             </div>
         </div>
-
-        <!-- Progress -->
         <div class="progress-container">
             <div class="progress-label">Progreso de Gastos vs Presupuesto</div>
             <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill" style="width: 0%;"><span id="progress-text">0%</span></div>
+                <div class="progress-fill" id="progress-fill" style="width:0%;"><span id="progress-text">0%</span></div>
             </div>
         </div>
-
-        <!-- Ingresos & Deudas -->
         <div class="info-grid">
             <div class="info-card">
-                <h3>💵 Ingresos</h3>
+                <h3>💵 Ingresos del Mes</h3>
                 <div id="ingresos-lista"></div>
                 <div class="info-total">
-                    <span class="info-total-label">Total Ingresos</span>
+                    <span class="info-total-label">Total</span>
                     <span class="info-total-value" id="ingresos-total-val" style="color:#34d399;">$0</span>
                 </div>
             </div>
-            <div class="info-card">
-                <h3>💳 Deudas / Pagos Fijos</h3>
-                <div id="deudas-lista"></div>
-                <div class="info-total">
-                    <span class="info-total-label">Total Deudas</span>
-                    <span class="info-total-value" id="deudas-total-val" style="color:#fbbf24;">$0</span>
-                </div>
-            </div>
         </div>
-
-        <!-- Categories -->
         <div style="margin-bottom: 30px;">
             <h2 class="section-title">Gastos por Categoría</h2>
             <div class="categories-grid" id="categories-container"></div>
         </div>
     </div>
 
-    <!-- Toast -->
-    <div class="toast" id="toast">✅ Registrado correctamente</div>
+    <div class="toast" id="toast"></div>
 
     <!-- Modal Registrar Gasto -->
     <div class="modal-overlay" id="modal-form">
         <div class="modal">
             <div class="modal-header">
-                <h2>➕ Registrar Gasto</h2>
+                <h2 id="form-title">➕ Registrar Gasto</h2>
                 <button class="modal-close" onclick="cerrarModal('modal-form')">✕</button>
             </div>
             <div class="form-group">
@@ -279,20 +224,7 @@
             </div>
             <div class="form-group">
                 <label>📂 Categoría</label>
-                <select id="form-categoria">
-                    <option value="Arriendo">🏠 Arriendo</option>
-                    <option value="Transporte">🚗 Transporte</option>
-                    <option value="Restaurantes">🍽️ Restaurantes</option>
-                    <option value="Mercado">🛒 Mercado</option>
-                    <option value="Compras">🛍️ Compras</option>
-                    <option value="Servicios Digitales">💻 Servicios Digitales</option>
-                    <option value="Salud/Farmacia">💊 Salud/Farmacia</option>
-                    <option value="Telecomunicaciones">📱 Telecomunicaciones</option>
-                    <option value="Educación">🎓 Educación</option>
-                    <option value="Entretenimiento">🎬 Entretenimiento</option>
-                    <option value="Seguridad Social">📋 Seguridad Social</option>
-                    <option value="Otros">📦 Otros</option>
-                </select>
+                <select id="form-categoria"></select>
             </div>
             <div class="form-group">
                 <label>📝 Descripción</label>
@@ -302,7 +234,7 @@
                 <label>📅 Fecha</label>
                 <input type="date" id="form-fecha">
             </div>
-            <button class="btn-submit" onclick="registrarGasto()">✅ Registrar Gasto</button>
+            <button class="btn-submit" id="form-btn" onclick="guardarGasto()">✅ Registrar Gasto</button>
         </div>
     </div>
 
@@ -325,32 +257,6 @@
         </div>
     </div>
 
-    <!-- Modal Registrar Deuda -->
-    <div class="modal-overlay" id="modal-deuda">
-        <div class="modal">
-            <div class="modal-header">
-                <h2>💳 Registrar Deuda</h2>
-                <button class="modal-close" onclick="cerrarModal('modal-deuda')">✕</button>
-            </div>
-            <div class="form-group">
-                <label>📝 Descripción</label>
-                <input type="text" id="deuda-desc" placeholder="Ej: Cuota carro, Tarjeta crédito...">
-            </div>
-            <div class="form-group">
-                <label>💰 Monto ($)</label>
-                <input type="number" id="deuda-monto" placeholder="Ej: 500000">
-            </div>
-            <div class="form-group">
-                <label>Estado</label>
-                <select id="deuda-estado">
-                    <option value="pendiente">⏳ Pendiente</option>
-                    <option value="pagada">✅ Pagada</option>
-                </select>
-            </div>
-            <button class="btn-submit red" onclick="registrarDeuda()">💳 Registrar Deuda</button>
-        </div>
-    </div>
-
     <!-- Modal Detalle Categoría -->
     <div class="modal-overlay" id="modal">
         <div class="modal">
@@ -359,383 +265,356 @@
                 <button class="modal-close" onclick="cerrarModal('modal')">✕</button>
             </div>
             <div class="modal-stats">
-                <div>
-                    <div class="modal-stat-label">Total Gastado</div>
-                    <div class="modal-stat-value" id="modal-gastado">$0</div>
-                </div>
-                <div>
-                    <div class="modal-stat-label">Presupuesto</div>
-                    <div class="modal-stat-value" id="modal-presupuesto">$0</div>
-                </div>
+                <div><div class="modal-stat-label">Gastado</div><div class="modal-stat-value" id="modal-gastado">$0</div></div>
+                <div><div class="modal-stat-label">Presupuesto</div><div class="modal-stat-value" id="modal-presupuesto">$0</div></div>
             </div>
-            <div class="modal-items-title">Gastos en esta categoría:</div>
             <div id="modal-items-list"></div>
         </div>
     </div>
 
     <script>
         const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+        const categoriasList = ['Arriendo','Transporte','Restaurantes','Mercado','Compras','Servicios Digitales','Salud/Farmacia','Telecomunicaciones','Educación','Entretenimiento','Seguridad Social','Préstamos','Otros'];
+        const emojis = {'Arriendo':'🏠','Transporte':'🚗','Restaurantes':'🍽️','Mercado':'🛒','Compras':'🛍️','Servicios Digitales':'💻','Salud/Farmacia':'💊','Telecomunicaciones':'📱','Educación':'🎓','Entretenimiento':'🎬','Seguridad Social':'📋','Préstamos':'🏦','Otros':'📦'};
 
         const presupuestos = {
-            'Arriendo': 1750000, 'Transporte': 200000, 'Restaurantes': 500000,
-            'Mercado': 500000, 'Compras': 300000, 'Servicios Digitales': 300000,
-            'Salud/Farmacia': 250000, 'Telecomunicaciones': 50000, 'Educación': 300000,
-            'Entretenimiento': 300000, 'Seguridad Social': 899700, 'Otros': 200000
+            'Arriendo':1750000,'Transporte':200000,'Restaurantes':500000,'Mercado':500000,
+            'Compras':300000,'Servicios Digitales':300000,'Salud/Farmacia':250000,
+            'Telecomunicaciones':50000,'Educación':300000,'Entretenimiento':300000,
+            'Seguridad Social':899700,'Préstamos':2100000,'Otros':200000
         };
-
         const colores = {
-            'Arriendo': '#ef4444', 'Transporte': '#3b82f6', 'Restaurantes': '#f97316',
-            'Mercado': '#22c55e', 'Compras': '#a855f7', 'Servicios Digitales': '#06b6d4',
-            'Salud/Farmacia': '#10b981', 'Telecomunicaciones': '#eab308', 'Educación': '#8b5cf6',
-            'Entretenimiento': '#ec4899', 'Seguridad Social': '#6366f1', 'Otros': '#64748b'
+            'Arriendo':'#ef4444','Transporte':'#3b82f6','Restaurantes':'#f97316','Mercado':'#22c55e',
+            'Compras':'#a855f7','Servicios Digitales':'#06b6d4','Salud/Farmacia':'#10b981',
+            'Telecomunicaciones':'#eab308','Educación':'#8b5cf6','Entretenimiento':'#ec4899',
+            'Seguridad Social':'#6366f1','Préstamos':'#f43f5e','Otros':'#64748b'
         };
 
         const gastosRealMayo = [
-            { monto: 1750000, categoria: 'Arriendo', descripcion: 'Arriendo mensual', fecha: '01/05/2026' },
-            { monto: 107000, categoria: 'Mercado', descripcion: 'Nawfalih', fecha: '03/05/2026' },
-            { monto: 99800, categoria: 'Restaurantes', descripcion: 'Bold Yuan Bei', fecha: '04/05/2026' },
-            { monto: 32500, categoria: 'Mercado', descripcion: 'DollarCity', fecha: '10/05/2026' },
-            { monto: 97500, categoria: 'Mercado', descripcion: 'Carulla Manizales', fecha: '25/05/2026' },
-            { monto: 182441, categoria: 'Educación', descripcion: 'Beconfiden', fecha: '30/04/2026' },
-            { monto: 9388, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '30/04/2026' },
-            { monto: 24977, categoria: 'Transporte', descripcion: 'DLO Uber', fecha: '30/04/2026' },
-            { monto: 19900, categoria: 'Transporte', descripcion: 'Uber One Membership', fecha: '14/05/2026' },
-            { monto: 48800, categoria: 'Restaurantes', descripcion: 'Rappi', fecha: '30/04/2026' },
-            { monto: 55200, categoria: 'Restaurantes', descripcion: 'Caferatto', fecha: '01/05/2026' },
-            { monto: 83961, categoria: 'Restaurantes', descripcion: 'Rappi', fecha: '01/05/2026' },
-            { monto: 67300, categoria: 'Restaurantes', descripcion: 'Rappi', fecha: '04/05/2026' },
-            { monto: 1125, categoria: 'Restaurantes', descripcion: 'Rappi', fecha: '05/05/2026' },
-            { monto: 52500, categoria: 'Restaurantes', descripcion: 'Mazorca Paisa', fecha: '05/05/2026' },
-            { monto: 28900, categoria: 'Restaurantes', descripcion: 'Rappi', fecha: '07/05/2026' },
-            { monto: 26000, categoria: 'Restaurantes', descripcion: 'Bold Calamar Azul', fecha: '08/05/2026' },
-            { monto: 19000, categoria: 'Restaurantes', descripcion: 'Affogato Cae Snack', fecha: '09/05/2026' },
-            { monto: 16000, categoria: 'Restaurantes', descripcion: 'Panaderia y Heladeria', fecha: '09/05/2026' },
-            { monto: 60500, categoria: 'Restaurantes', descripcion: 'La Bodega BBC', fecha: '22/05/2026' },
-            { monto: 71500, categoria: 'Restaurantes', descripcion: 'Bold Meydey', fecha: '24/05/2026' },
-            { monto: 23000, categoria: 'Restaurantes', descripcion: 'Bold Presteza Restaura', fecha: '26/05/2026' },
-            { monto: 29000, categoria: 'Restaurantes', descripcion: 'Olive Cocina Saludable', fecha: '27/05/2026' },
-            { monto: 19000, categoria: 'Restaurantes', descripcion: 'Bold', fecha: '11/05/2026' },
-            { monto: 5391, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '04/05/2026' },
-            { monto: 14031, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '05/05/2026' },
-            { monto: 7303, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '06/05/2026' },
-            { monto: 14711, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '06/05/2026' },
-            { monto: 6366, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '13/05/2026' },
-            { monto: 9056, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '15/05/2026' },
-            { monto: 6395, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '15/05/2026' },
-            { monto: 8192, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '18/05/2026' },
-            { monto: 8075, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '21/05/2026' },
-            { monto: 8054, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '22/05/2026' },
-            { monto: 10684, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '22/05/2026' },
-            { monto: 9623, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '22/05/2026' },
-            { monto: 9385, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '25/05/2026' },
-            { monto: 6426, categoria: 'Transporte', descripcion: 'Uber Rides', fecha: '27/05/2026' },
-            { monto: 45553, categoria: 'Salud/Farmacia', descripcion: 'Farmatodo', fecha: '01/05/2026' },
-            { monto: 45553, categoria: 'Salud/Farmacia', descripcion: 'Farmatodo', fecha: '27/05/2026' },
-            { monto: 82050, categoria: 'Salud/Farmacia', descripcion: 'Farmatodo', fecha: '27/05/2026' },
-            { monto: 29900, categoria: 'Entretenimiento', descripcion: 'Netflix', fecha: '02/05/2026' },
-            { monto: 8000, categoria: 'Entretenimiento', descripcion: 'Disney DTC', fecha: '20/05/2026' },
-            { monto: 54900, categoria: 'Entretenimiento', descripcion: 'Disney DTC', fecha: '28/05/2026' },
-            { monto: 13300, categoria: 'Entretenimiento', descripcion: 'Google Play YouTube', fecha: '21/05/2026' },
-            { monto: 141521, categoria: 'Telecomunicaciones', descripcion: 'Lycamobile', fecha: '09/05/2026' },
-            { monto: 386725, categoria: 'Telecomunicaciones', descripcion: 'Lycamobile', fecha: '09/05/2026' },
-            { monto: 382541, categoria: 'Telecomunicaciones', descripcion: 'Lycamobile', fecha: '09/05/2026' },
-            { monto: 19516, categoria: 'Servicios Digitales', descripcion: 'Anthropic', fecha: '19/05/2026' },
-            { monto: 57610, categoria: 'Servicios Digitales', descripcion: 'Anthropic', fecha: '20/05/2026' },
-            { monto: 78062, categoria: 'Servicios Digitales', descripcion: 'Claude AI Subscription', fecha: '20/05/2026' },
-            { monto: 160000, categoria: 'Otros', descripcion: 'Vivero Suministros', fecha: '03/05/2026' },
-            { monto: 12000, categoria: 'Otros', descripcion: 'Drogueria El Cable', fecha: '10/05/2026' },
-            { monto: 6100, categoria: 'Otros', descripcion: 'Camara de Comercio Abu', fecha: '18/05/2026' },
-            { monto: 269890, categoria: 'Compras', descripcion: 'Falabella', fecha: '13/05/2026' }
+            {monto:1750000,categoria:'Arriendo',descripcion:'Arriendo mensual',fecha:'01/05/2026'},
+            {monto:107000,categoria:'Mercado',descripcion:'Nawfalih',fecha:'03/05/2026'},
+            {monto:99800,categoria:'Restaurantes',descripcion:'Bold Yuan Bei',fecha:'04/05/2026'},
+            {monto:32500,categoria:'Mercado',descripcion:'DollarCity',fecha:'10/05/2026'},
+            {monto:97500,categoria:'Mercado',descripcion:'Carulla Manizales',fecha:'25/05/2026'},
+            {monto:182441,categoria:'Educación',descripcion:'Beconfiden',fecha:'30/04/2026'},
+            {monto:9388,categoria:'Transporte',descripcion:'Uber Rides',fecha:'30/04/2026'},
+            {monto:24977,categoria:'Transporte',descripcion:'DLO Uber',fecha:'30/04/2026'},
+            {monto:19900,categoria:'Transporte',descripcion:'Uber One Membership',fecha:'14/05/2026'},
+            {monto:48800,categoria:'Restaurantes',descripcion:'Rappi',fecha:'30/04/2026'},
+            {monto:55200,categoria:'Restaurantes',descripcion:'Caferatto',fecha:'01/05/2026'},
+            {monto:83961,categoria:'Restaurantes',descripcion:'Rappi',fecha:'01/05/2026'},
+            {monto:67300,categoria:'Restaurantes',descripcion:'Rappi',fecha:'04/05/2026'},
+            {monto:1125,categoria:'Restaurantes',descripcion:'Rappi',fecha:'05/05/2026'},
+            {monto:52500,categoria:'Restaurantes',descripcion:'Mazorca Paisa',fecha:'05/05/2026'},
+            {monto:28900,categoria:'Restaurantes',descripcion:'Rappi',fecha:'07/05/2026'},
+            {monto:26000,categoria:'Restaurantes',descripcion:'Bold Calamar Azul',fecha:'08/05/2026'},
+            {monto:19000,categoria:'Restaurantes',descripcion:'Affogato Cae Snack',fecha:'09/05/2026'},
+            {monto:16000,categoria:'Restaurantes',descripcion:'Panaderia y Heladeria',fecha:'09/05/2026'},
+            {monto:60500,categoria:'Restaurantes',descripcion:'La Bodega BBC',fecha:'22/05/2026'},
+            {monto:71500,categoria:'Restaurantes',descripcion:'Bold Meydey',fecha:'24/05/2026'},
+            {monto:23000,categoria:'Restaurantes',descripcion:'Bold Presteza Restaura',fecha:'26/05/2026'},
+            {monto:29000,categoria:'Restaurantes',descripcion:'Olive Cocina Saludable',fecha:'27/05/2026'},
+            {monto:19000,categoria:'Restaurantes',descripcion:'Bold',fecha:'11/05/2026'},
+            {monto:5391,categoria:'Transporte',descripcion:'Uber Rides',fecha:'04/05/2026'},
+            {monto:14031,categoria:'Transporte',descripcion:'Uber Rides',fecha:'05/05/2026'},
+            {monto:7303,categoria:'Transporte',descripcion:'Uber Rides',fecha:'06/05/2026'},
+            {monto:14711,categoria:'Transporte',descripcion:'Uber Rides',fecha:'06/05/2026'},
+            {monto:6366,categoria:'Transporte',descripcion:'Uber Rides',fecha:'13/05/2026'},
+            {monto:9056,categoria:'Transporte',descripcion:'Uber Rides',fecha:'15/05/2026'},
+            {monto:6395,categoria:'Transporte',descripcion:'Uber Rides',fecha:'15/05/2026'},
+            {monto:8192,categoria:'Transporte',descripcion:'Uber Rides',fecha:'18/05/2026'},
+            {monto:8075,categoria:'Transporte',descripcion:'Uber Rides',fecha:'21/05/2026'},
+            {monto:8054,categoria:'Transporte',descripcion:'Uber Rides',fecha:'22/05/2026'},
+            {monto:10684,categoria:'Transporte',descripcion:'Uber Rides',fecha:'22/05/2026'},
+            {monto:9623,categoria:'Transporte',descripcion:'Uber Rides',fecha:'22/05/2026'},
+            {monto:9385,categoria:'Transporte',descripcion:'Uber Rides',fecha:'25/05/2026'},
+            {monto:6426,categoria:'Transporte',descripcion:'Uber Rides',fecha:'27/05/2026'},
+            {monto:45553,categoria:'Salud/Farmacia',descripcion:'Farmatodo',fecha:'01/05/2026'},
+            {monto:45553,categoria:'Salud/Farmacia',descripcion:'Farmatodo',fecha:'27/05/2026'},
+            {monto:82050,categoria:'Salud/Farmacia',descripcion:'Farmatodo',fecha:'27/05/2026'},
+            {monto:29900,categoria:'Entretenimiento',descripcion:'Netflix',fecha:'02/05/2026'},
+            {monto:8000,categoria:'Entretenimiento',descripcion:'Disney DTC',fecha:'20/05/2026'},
+            {monto:54900,categoria:'Entretenimiento',descripcion:'Disney DTC',fecha:'28/05/2026'},
+            {monto:13300,categoria:'Entretenimiento',descripcion:'Google Play YouTube',fecha:'21/05/2026'},
+            {monto:141521,categoria:'Telecomunicaciones',descripcion:'Lycamobile',fecha:'09/05/2026'},
+            {monto:386725,categoria:'Telecomunicaciones',descripcion:'Lycamobile',fecha:'09/05/2026'},
+            {monto:382541,categoria:'Telecomunicaciones',descripcion:'Lycamobile',fecha:'09/05/2026'},
+            {monto:19516,categoria:'Servicios Digitales',descripcion:'Anthropic',fecha:'19/05/2026'},
+            {monto:57610,categoria:'Servicios Digitales',descripcion:'Anthropic',fecha:'20/05/2026'},
+            {monto:78062,categoria:'Servicios Digitales',descripcion:'Claude AI Subscription',fecha:'20/05/2026'},
+            {monto:160000,categoria:'Otros',descripcion:'Vivero Suministros',fecha:'03/05/2026'},
+            {monto:12000,categoria:'Otros',descripcion:'Drogueria El Cable',fecha:'10/05/2026'},
+            {monto:6100,categoria:'Otros',descripcion:'Camara de Comercio Abu',fecha:'18/05/2026'},
+            {monto:269890,categoria:'Compras',descripcion:'Falabella',fecha:'13/05/2026'}
         ];
 
         const gastosRealJunio = [
-            { monto: 899700, categoria: 'Seguridad Social', descripcion: 'Seguridad Social', fecha: '01/06/2026' },
-            { monto: 298000, categoria: 'Salud/Farmacia', descripcion: 'Artek - Mantenimiento Periodontal', fecha: '01/06/2026' },
-            { monto: 6500, categoria: 'Transporte', descripcion: 'Taxi al odontólogo', fecha: '01/06/2026' },
-            { monto: 7500, categoria: 'Transporte', descripcion: 'Taxi regreso odontólogo', fecha: '01/06/2026' },
-            { monto: 40000, categoria: 'Mercado', descripcion: 'Almacenes Éxito - Vasos y trapo', fecha: '01/06/2026' },
-            { monto: 8500, categoria: 'Transporte', descripcion: 'Taxi', fecha: '01/06/2026' }
+            {monto:899700,categoria:'Seguridad Social',descripcion:'Seguridad Social',fecha:'01/06/2026'},
+            {monto:298000,categoria:'Salud/Farmacia',descripcion:'Artek - Mantenimiento Periodontal',fecha:'01/06/2026'},
+            {monto:6500,categoria:'Transporte',descripcion:'Taxi al odontólogo',fecha:'01/06/2026'},
+            {monto:7500,categoria:'Transporte',descripcion:'Taxi regreso odontólogo',fecha:'01/06/2026'},
+            {monto:40000,categoria:'Mercado',descripcion:'Almacenes Éxito - Vasos y trapo',fecha:'01/06/2026'},
+            {monto:8500,categoria:'Transporte',descripcion:'Taxi',fecha:'01/06/2026'}
         ];
 
-        // Ingresos base por mes
-        const ingresosBase = {
-            4: [{ descripcion: 'Salario', monto: 6000000 }],
-            5: [{ descripcion: 'Salario', monto: 6000000 }]
-        };
+        const ingresosBase = { 4:[{descripcion:'Salario',monto:6000000}], 5:[{descripcion:'Salario',monto:6000000}] };
 
         let mesCurrent = new Date().getMonth();
+        let editIndex = -1; // -1 = nuevo, >= 0 = editando
 
-        // === LOCALSTORAGE HELPERS ===
-        function getLS(key) { try { return JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) { return []; } }
-        function setLS(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
+        // === LOCALSTORAGE ===
+        function getLS(k){try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return[]}}
+        function setLS(k,v){localStorage.setItem(k,JSON.stringify(v))}
 
         function getGastosMes(mes) {
             let base = [];
-            if (mes === 4) base = [...gastosRealMayo];
-            else if (mes === 5) base = [...gastosRealJunio];
-            const manuales = getLS('gastosManuales').filter(g => {
-                const p = g.fecha.split('/');
-                return (parseInt(p[1]) - 1) === mes;
-            });
-            return [...base, ...manuales];
+            if (mes===4) base=[...gastosRealMayo];
+            else if (mes===5) base=[...gastosRealJunio];
+            const man = getLS('gastosManuales').filter(g=>{const p=g.fecha.split('/');return(parseInt(p[1])-1)===mes;});
+            return [...base, ...man];
         }
-
         function getIngresosMes(mes) {
-            const base = ingresosBase[mes] ? [...ingresosBase[mes]] : [{ descripcion: 'Salario', monto: 6000000 }];
-            const extras = getLS('ingresosExtra').filter(i => i.mes === mes);
-            return [...base, ...extras];
+            const base = ingresosBase[mes]?[...ingresosBase[mes]]:[{descripcion:'Salario',monto:6000000}];
+            return [...base, ...getLS('ingresosExtra').filter(i=>i.mes===mes)];
         }
 
-        function getDeudasMes(mes) {
-            return getLS('deudas').filter(d => d.mes === mes);
-        }
-
-        // === SELECTORES DE MES ===
+        // === SELECTORES ===
         function crearSelectoresMeses() {
-            const selector = document.getElementById('mes-selector');
-            selector.innerHTML = '';
-            meses.forEach((mes, i) => {
-                const btn = document.createElement('button');
-                btn.className = 'mes-btn' + (i === mesCurrent ? ' activo' : '');
-                btn.textContent = mes.substring(0, 3);
-                btn.onclick = () => { mesCurrent = i; actualizarUI(); crearSelectoresMeses(); };
-                selector.appendChild(btn);
+            const sel = document.getElementById('mes-selector'); sel.innerHTML = '';
+            meses.forEach((m,i)=>{
+                const b=document.createElement('button');
+                b.className='mes-btn'+(i===mesCurrent?' activo':'');
+                b.textContent=m.substring(0,3);
+                b.onclick=()=>{mesCurrent=i;actualizarUI();crearSelectoresMeses();};
+                sel.appendChild(b);
             });
         }
 
-        // === UI UPDATE ===
+        // Populate category select
+        function populateCatSelect() {
+            const sel = document.getElementById('form-categoria');
+            sel.innerHTML = categoriasList.map(c=>`<option value="${c}">${emojis[c]||''} ${c}</option>`).join('');
+        }
+
+        // === UI ===
         function actualizarUI() {
             const gastos = getGastosMes(mesCurrent);
             const ingresos = getIngresosMes(mesCurrent);
-            const deudas = getDeudasMes(mesCurrent);
+            const totalG = gastos.reduce((s,g)=>s+g.monto,0);
+            const totalI = ingresos.reduce((s,i)=>s+i.monto,0);
+            const disp = totalI - totalG;
+            const presT = Object.values(presupuestos).reduce((a,b)=>a+b,0);
+            const pct = presT>0?Math.round((totalG/presT)*100):0;
 
-            const totalGastado = gastos.reduce((s, g) => s + g.monto, 0);
-            const totalIngresos = ingresos.reduce((s, i) => s + i.monto, 0);
-            const totalDeudas = deudas.reduce((s, d) => s + d.monto, 0);
-            const disponible = totalIngresos - totalGastado - totalDeudas;
-            const presupuestoTotal = Object.values(presupuestos).reduce((a, b) => a + b, 0);
-            const porcentaje = presupuestoTotal > 0 ? Math.round((totalGastado / presupuestoTotal) * 100) : 0;
+            document.getElementById('total-ingresos').textContent='$'+totalI.toLocaleString('es-CO');
+            document.getElementById('total-gastado').textContent='$'+totalG.toLocaleString('es-CO');
+            document.getElementById('total-subtext').textContent='de $'+presT.toLocaleString('es-CO');
+            const dEl=document.getElementById('ahorro-acumulado');
+            if(disp<0){dEl.textContent='-$'+Math.abs(disp).toLocaleString('es-CO');dEl.style.color='#f87171';}
+            else{dEl.textContent='$'+disp.toLocaleString('es-CO');dEl.style.color='#818cf8';}
+            document.getElementById('progress-fill').style.width=Math.min(pct,100)+'%';
+            document.getElementById('progress-text').textContent=pct+'%';
 
-            document.getElementById('total-ingresos').textContent = '$' + totalIngresos.toLocaleString('es-CO');
-            document.getElementById('total-gastado').textContent = '$' + totalGastado.toLocaleString('es-CO');
-            document.getElementById('total-subtext').textContent = 'de $' + presupuestoTotal.toLocaleString('es-CO');
-            document.getElementById('total-deudas').textContent = '$' + totalDeudas.toLocaleString('es-CO');
-
-            const dispEl = document.getElementById('ahorro-acumulado');
-            dispEl.textContent = '$' + Math.abs(disponible).toLocaleString('es-CO');
-            if (disponible < 0) { dispEl.style.color = '#f87171'; dispEl.textContent = '-$' + Math.abs(disponible).toLocaleString('es-CO'); }
-            else { dispEl.style.color = '#818cf8'; }
-
-            document.getElementById('progress-fill').style.width = Math.min(porcentaje, 100) + '%';
-            document.getElementById('progress-text').textContent = porcentaje + '%';
-
-            // Ingresos lista
-            const ingList = document.getElementById('ingresos-lista');
-            ingList.innerHTML = ingresos.map(i => `<div class="info-item"><span class="info-item-name">${i.descripcion}</span><span class="info-item-value" style="color:#34d399;">$${i.monto.toLocaleString('es-CO')}</span></div>`).join('');
-            document.getElementById('ingresos-total-val').textContent = '$' + totalIngresos.toLocaleString('es-CO');
-
-            // Deudas lista
-            const deudList = document.getElementById('deudas-lista');
-            if (deudas.length === 0) {
-                deudList.innerHTML = '<div style="text-align:center;color:#64748b;padding:10px;font-size:13px;">Sin deudas registradas</div>';
-            } else {
-                deudList.innerHTML = deudas.map(d => `<div class="info-item"><span class="info-item-name">${d.descripcion} <span style="font-size:10px;color:${d.estado==='pagada'?'#34d399':'#fbbf24'}">${d.estado==='pagada'?'✅ Pagada':'⏳ Pendiente'}</span></span><span class="info-item-value" style="color:#fbbf24;">$${d.monto.toLocaleString('es-CO')}</span></div>`).join('');
-            }
-            document.getElementById('deudas-total-val').textContent = '$' + totalDeudas.toLocaleString('es-CO');
+            // Ingresos
+            const iL=document.getElementById('ingresos-lista');
+            iL.innerHTML=ingresos.map((ing,idx)=>{
+                const isExtra=idx>=((ingresosBase[mesCurrent]||[{descripcion:'Salario',monto:6000000}]).length);
+                return `<div class="info-item"><span class="info-item-name">${ing.descripcion}</span><span class="info-item-value" style="color:#34d399;">$${ing.monto.toLocaleString('es-CO')}${isExtra?` <button class="btn-delete" onclick="eliminarIngreso(${idx})" title="Eliminar">🗑️</button>`:''}</span></div>`;
+            }).join('');
+            document.getElementById('ingresos-total-val').textContent='$'+totalI.toLocaleString('es-CO');
 
             actualizarCategorias(gastos);
         }
 
         function actualizarCategorias(gastos) {
-            const container = document.getElementById('categories-container');
-            container.innerHTML = '';
-            Object.entries(presupuestos).forEach(([cat, presupuesto]) => {
-                const gastado = gastos.filter(g => g.categoria === cat).reduce((s, g) => s + g.monto, 0);
-                const pct = presupuesto > 0 ? Math.round((gastado / presupuesto) * 100) : 0;
-                const color = colores[cat];
-                const card = document.createElement('div');
-                card.className = 'category-card';
-                card.onclick = () => abrirModalCategoria(cat, presupuesto, gastado, gastos);
-                card.innerHTML = `
-                    <div class="category-name">${cat}</div>
-                    <div class="category-amount">$${gastado.toLocaleString('es-CO')}</div>
-                    <div class="category-progress"><div class="category-progress-fill" style="width:${Math.min(pct,100)}%;background:${color};"></div></div>
-                    <div class="category-percentage">${pct}% de $${presupuesto.toLocaleString('es-CO')}</div>
-                `;
-                container.appendChild(card);
+            const c=document.getElementById('categories-container');c.innerHTML='';
+            Object.entries(presupuestos).forEach(([cat,pres])=>{
+                const g=gastos.filter(x=>x.categoria===cat).reduce((s,x)=>s+x.monto,0);
+                const p=pres>0?Math.round((g/pres)*100):0;
+                const col=colores[cat];
+                const card=document.createElement('div');card.className='category-card';
+                card.onclick=()=>abrirModalCategoria(cat,pres,g,gastos);
+                card.innerHTML=`<div class="category-name">${emojis[cat]||''} ${cat}</div><div class="category-amount">$${g.toLocaleString('es-CO')}</div><div class="category-progress"><div class="category-progress-fill" style="width:${Math.min(p,100)}%;background:${col};"></div></div><div class="category-percentage">${p}% de $${pres.toLocaleString('es-CO')}</div>`;
+                c.appendChild(card);
             });
         }
 
         // === MODALS ===
-        function cerrarModal(id) { document.getElementById(id).classList.remove('activo'); }
+        function cerrarModal(id){document.getElementById(id).classList.remove('activo');}
 
-        function abrirModalCategoria(categoria, presupuesto, gastado, gastos) {
-            const gc = gastos.filter(g => g.categoria === categoria);
-            document.getElementById('modal-titulo').textContent = categoria;
-            document.getElementById('modal-gastado').textContent = '$' + gastado.toLocaleString('es-CO');
-            document.getElementById('modal-presupuesto').textContent = '$' + presupuesto.toLocaleString('es-CO');
-            let html = '';
-            // Alerta para TODAS las categorías
-            if (gastado > presupuesto) {
-                const exc = gastado - presupuesto;
-                html += `<div style="background:rgba(239,68,68,0.15);border:1px solid #ef4444;padding:12px;border-radius:8px;margin-bottom:15px;color:#fca5a5;">🚨 <strong>¡Te pasaste!</strong> $${exc.toLocaleString('es-CO')} sobre tu presupuesto</div>`;
-            } else if (gastado === presupuesto) {
-                html += `<div style="background:rgba(234,179,8,0.15);border:1px solid #eab308;padding:12px;border-radius:8px;margin-bottom:15px;color:#fde047;">⚠️ <strong>¡Presupuesto agotado!</strong></div>`;
-            } else if (gastado > 0) {
-                const falt = presupuesto - gastado;
-                html += `<div style="background:rgba(16,185,129,0.15);border:1px solid #10b981;padding:12px;border-radius:8px;margin-bottom:15px;color:#6ee7b7;">✅ <strong>Te falta:</strong> $${falt.toLocaleString('es-CO')} para agotar tu presupuesto</div>`;
+        function abrirModalCategoria(cat,pres,gastado,gastos) {
+            const gc=gastos.filter(g=>g.categoria===cat);
+            document.getElementById('modal-titulo').textContent=emojis[cat]+' '+cat;
+            document.getElementById('modal-gastado').textContent='$'+gastado.toLocaleString('es-CO');
+            document.getElementById('modal-presupuesto').textContent='$'+pres.toLocaleString('es-CO');
+            let html='';
+            if(gastado>pres){const e=gastado-pres;html+=`<div style="background:rgba(239,68,68,0.15);border:1px solid #ef4444;padding:12px;border-radius:8px;margin-bottom:15px;color:#fca5a5;">🚨 <strong>¡Te pasaste!</strong> $${e.toLocaleString('es-CO')} sobre tu presupuesto</div>`;}
+            else if(gastado===pres&&gastado>0){html+=`<div style="background:rgba(234,179,8,0.15);border:1px solid #eab308;padding:12px;border-radius:8px;margin-bottom:15px;color:#fde047;">⚠️ <strong>Presupuesto agotado</strong></div>`;}
+            else if(gastado>0){const f=pres-gastado;html+=`<div style="background:rgba(16,185,129,0.15);border:1px solid #10b981;padding:12px;border-radius:8px;margin-bottom:15px;color:#6ee7b7;">✅ <strong>Te falta:</strong> $${f.toLocaleString('es-CO')} para agotar tu presupuesto</div>`;}
+            if(gc.length===0){html+='<p style="text-align:center;color:#64748b;padding:15px;">Sin gastos en esta categoría</p>';}
+            else{
+                html+=gc.map(g=>{
+                    const manIdx=esGastoManual(g);
+                    const acciones=manIdx>=0?`<div class="modal-item-actions"><button class="btn-edit" onclick="editarGasto(${manIdx})" title="Editar">✏️</button><button class="btn-delete" onclick="eliminarGasto(${manIdx})" title="Eliminar">🗑️</button></div>`:'';
+                    return `<div class="modal-item"><div class="modal-item-desc">${g.descripcion}<br><span style="font-size:10px;color:#475569;">${g.fecha}</span></div><div style="display:flex;align-items:center;">${acciones}<div class="modal-item-monto">$${g.monto.toLocaleString('es-CO')}</div></div></div>`;
+                }).join('');
             }
-            if (gc.length === 0) {
-                html += '<p style="text-align:center;color:#64748b;">No hay gastos en esta categoría</p>';
-            } else {
-                html += gc.map(g => `<div class="modal-item"><div class="modal-item-desc">${g.descripcion}<br><span style="font-size:10px;color:#475569;">${g.fecha}</span></div><div class="modal-item-monto">$${g.monto.toLocaleString('es-CO')}</div></div>`).join('');
-            }
-            document.getElementById('modal-items-list').innerHTML = html;
+            document.getElementById('modal-items-list').innerHTML=html;
             document.getElementById('modal').classList.add('activo');
         }
 
-        // === FORMULARIOS ===
+        function esGastoManual(gasto) {
+            const manuales=getLS('gastosManuales');
+            return manuales.findIndex(m=>m.monto===gasto.monto&&m.descripcion===gasto.descripcion&&m.fecha===gasto.fecha);
+        }
+
+        // === GASTOS CRUD ===
         function abrirFormulario() {
-            document.getElementById('form-fecha').value = new Date().toISOString().split('T')[0];
-            document.getElementById('form-monto').value = '';
-            document.getElementById('form-descripcion').value = '';
+            editIndex=-1;
+            document.getElementById('form-title').textContent='➕ Registrar Gasto';
+            document.getElementById('form-btn').textContent='✅ Registrar Gasto';
+            document.getElementById('form-fecha').value=new Date().toISOString().split('T')[0];
+            document.getElementById('form-monto').value='';
+            document.getElementById('form-descripcion').value='';
+            document.getElementById('form-categoria').value=categoriasList[0];
             document.getElementById('modal-form').classList.add('activo');
         }
 
-        function registrarGasto() {
-            const monto = parseInt(document.getElementById('form-monto').value);
-            const cat = document.getElementById('form-categoria').value;
-            const desc = document.getElementById('form-descripcion').value;
-            const fechaI = document.getElementById('form-fecha').value;
-            if (!monto || monto <= 0) return alert('Ingresa un monto válido');
-            if (!desc) return alert('Ingresa una descripción');
-            if (!fechaI) return alert('Selecciona una fecha');
-            const p = fechaI.split('-');
-            const fecha = p[2]+'/'+p[1]+'/'+p[0];
-            const gastos = getLS('gastosManuales');
-            gastos.push({ monto, categoria: cat, descripcion: desc, fecha });
-            setLS('gastosManuales', gastos);
-            cerrarModal('modal-form');
-            mesCurrent = parseInt(p[1]) - 1;
-            mostrarToast('✅ Gasto registrado');
-            actualizarUI(); crearSelectoresMeses();
+        function editarGasto(idx) {
+            cerrarModal('modal');
+            const manuales=getLS('gastosManuales');
+            const g=manuales[idx];
+            if(!g) return;
+            editIndex=idx;
+            document.getElementById('form-title').textContent='✏️ Editar Gasto';
+            document.getElementById('form-btn').textContent='💾 Guardar Cambios';
+            document.getElementById('form-monto').value=g.monto;
+            document.getElementById('form-descripcion').value=g.descripcion;
+            document.getElementById('form-categoria').value=g.categoria;
+            const pf=g.fecha.split('/');
+            document.getElementById('form-fecha').value=pf[2]+'-'+pf[1]+'-'+pf[0];
+            document.getElementById('modal-form').classList.add('activo');
         }
 
-        function abrirFormIngreso() { document.getElementById('ingreso-monto').value = ''; document.getElementById('ingreso-desc').value = ''; document.getElementById('modal-ingreso').classList.add('activo'); }
-
-        function registrarIngreso() {
-            const monto = parseInt(document.getElementById('ingreso-monto').value);
-            const desc = document.getElementById('ingreso-desc').value;
-            if (!monto || monto <= 0) return alert('Ingresa un monto válido');
-            if (!desc) return alert('Ingresa una descripción');
-            const extras = getLS('ingresosExtra');
-            extras.push({ descripcion: desc, monto, mes: mesCurrent });
-            setLS('ingresosExtra', extras);
-            cerrarModal('modal-ingreso');
-            mostrarToast('✅ Ingreso agregado');
-            actualizarUI();
-        }
-
-        function abrirFormDeuda() { document.getElementById('deuda-monto').value = ''; document.getElementById('deuda-desc').value = ''; document.getElementById('modal-deuda').classList.add('activo'); }
-
-        function registrarDeuda() {
-            const monto = parseInt(document.getElementById('deuda-monto').value);
-            const desc = document.getElementById('deuda-desc').value;
-            const estado = document.getElementById('deuda-estado').value;
-            if (!monto || monto <= 0) return alert('Ingresa un monto válido');
-            if (!desc) return alert('Ingresa una descripción');
-            const deudas = getLS('deudas');
-            deudas.push({ descripcion: desc, monto, estado, mes: mesCurrent });
-            setLS('deudas', deudas);
-            cerrarModal('modal-deuda');
-            mostrarToast('✅ Deuda registrada');
-            actualizarUI();
-        }
-
-        function mostrarToast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg; t.style.display = 'block';
-            setTimeout(() => { t.style.display = 'none'; }, 3000);
-        }
-
-        // === DESCARGAR INFORME ===
-        function descargarInforme() {
-            const gastos = getGastosMes(mesCurrent);
-            const ingresos = getIngresosMes(mesCurrent);
-            const deudas = getDeudasMes(mesCurrent);
-            const totalGastado = gastos.reduce((s,g) => s + g.monto, 0);
-            const totalIngresos = ingresos.reduce((s,i) => s + i.monto, 0);
-            const totalDeudas = deudas.reduce((s,d) => s + d.monto, 0);
-            const disponible = totalIngresos - totalGastado - totalDeudas;
-            const mesNombre = meses[mesCurrent];
-
-            let catResumen = '';
-            Object.entries(presupuestos).forEach(([cat, pres]) => {
-                const gastado = gastos.filter(g => g.categoria === cat).reduce((s,g) => s + g.monto, 0);
-                const pct = pres > 0 ? Math.round((gastado / pres) * 100) : 0;
-                let estado = '✅ Dentro del presupuesto';
-                if (pct > 100) estado = '🚨 EXCEDIDO (' + (pct - 100) + '% más)';
-                else if (pct > 80) estado = '⚠️ Cerca del límite';
-                catResumen += `│ ${cat.padEnd(22)} │ $${gastado.toLocaleString('es-CO').padStart(12)} │ $${pres.toLocaleString('es-CO').padStart(12)} │ ${pct}% │ ${estado}\n`;
-            });
-
-            let recomendaciones = '\n📋 RECOMENDACIONES:\n';
-            Object.entries(presupuestos).forEach(([cat, pres]) => {
-                const gastado = gastos.filter(g => g.categoria === cat).reduce((s,g) => s + g.monto, 0);
-                const pct = pres > 0 ? Math.round((gastado / pres) * 100) : 0;
-                if (pct > 100) {
-                    recomendaciones += `⚠️ ${cat}: Te pasaste $${(gastado - pres).toLocaleString('es-CO')}. Revisa si puedes reducir gastos aquí.\n`;
-                }
-            });
-
-            if (disponible > 0) {
-                recomendaciones += `\n💡 Tu disponible es $${disponible.toLocaleString('es-CO')}. Considera ahorrar al menos el 20% ($${Math.round(totalIngresos * 0.2).toLocaleString('es-CO')}).\n`;
+        function guardarGasto() {
+            const monto=parseInt(document.getElementById('form-monto').value);
+            const cat=document.getElementById('form-categoria').value;
+            const desc=document.getElementById('form-descripcion').value;
+            const fechaI=document.getElementById('form-fecha').value;
+            if(!monto||monto<=0) return alert('Ingresa un monto válido');
+            if(!desc) return alert('Ingresa una descripción');
+            if(!fechaI) return alert('Selecciona una fecha');
+            const p=fechaI.split('-');
+            const fecha=p[2]+'/'+p[1]+'/'+p[0];
+            const manuales=getLS('gastosManuales');
+            if(editIndex>=0){
+                manuales[editIndex]={monto,categoria:cat,descripcion:desc,fecha};
+                mostrarToast('✏️ Gasto editado');
             } else {
-                recomendaciones += `\n🚨 ¡ATENCIÓN! Tus gastos + deudas superan tus ingresos por $${Math.abs(disponible).toLocaleString('es-CO')}. Revisa urgente tus gastos.\n`;
+                manuales.push({monto,categoria:cat,descripcion:desc,fecha});
+                mostrarToast('✅ Gasto registrado');
             }
+            setLS('gastosManuales',manuales);
+            cerrarModal('modal-form');
+            mesCurrent=parseInt(p[1])-1;
+            editIndex=-1;
+            actualizarUI();crearSelectoresMeses();
+        }
 
-            const informe = `
-═══════════════════════════════════════════════════
-         📊 INFORME FINANCIERO - ${mesNombre.toUpperCase()} 2026
-         💰 Finanzas Maye
-═══════════════════════════════════════════════════
+        function eliminarGasto(idx) {
+            if(!confirm('¿Eliminar este gasto?')) return;
+            const m=getLS('gastosManuales');
+            m.splice(idx,1);
+            setLS('gastosManuales',m);
+            cerrarModal('modal');
+            mostrarToast('🗑️ Gasto eliminado');
+            actualizarUI();
+        }
 
-📅 Fecha del informe: ${new Date().toLocaleDateString('es-CO')}
+        // === INGRESOS ===
+        function abrirFormIngreso(){document.getElementById('ingreso-monto').value='';document.getElementById('ingreso-desc').value='';document.getElementById('modal-ingreso').classList.add('activo');}
+        function registrarIngreso(){
+            const m=parseInt(document.getElementById('ingreso-monto').value);
+            const d=document.getElementById('ingreso-desc').value;
+            if(!m||m<=0) return alert('Ingresa un monto válido');
+            if(!d) return alert('Ingresa una descripción');
+            const e=getLS('ingresosExtra');e.push({descripcion:d,monto:m,mes:mesCurrent});setLS('ingresosExtra',e);
+            cerrarModal('modal-ingreso');mostrarToast('✅ Ingreso agregado');actualizarUI();
+        }
+        function eliminarIngreso(displayIdx){
+            const baseLen=(ingresosBase[mesCurrent]||[{descripcion:'Salario',monto:6000000}]).length;
+            const extraIdx=displayIdx-baseLen;
+            if(extraIdx<0) return;
+            if(!confirm('¿Eliminar este ingreso?')) return;
+            const extras=getLS('ingresosExtra');
+            const mesExtras=extras.filter(i=>i.mes===mesCurrent);
+            const toRemove=mesExtras[extraIdx];
+            const globalIdx=extras.indexOf(toRemove);
+            if(globalIdx>=0){extras.splice(globalIdx,1);setLS('ingresosExtra',extras);}
+            mostrarToast('🗑️ Ingreso eliminado');actualizarUI();
+        }
 
-━━━ RESUMEN GENERAL ━━━
-💵 Total Ingresos:     $${totalIngresos.toLocaleString('es-CO')}
-💸 Total Gastos:       $${totalGastado.toLocaleString('es-CO')}
-💳 Total Deudas:       $${totalDeudas.toLocaleString('es-CO')}
-💰 Disponible:         $${disponible.toLocaleString('es-CO')}
+        function mostrarToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>{t.style.display='none';},3000);}
+
+        // === INFORME ===
+        function descargarInforme(){
+            const gastos=getGastosMes(mesCurrent);
+            const ingresos=getIngresosMes(mesCurrent);
+            const tG=gastos.reduce((s,g)=>s+g.monto,0);
+            const tI=ingresos.reduce((s,i)=>s+i.monto,0);
+            const disp=tI-tG;
+            const mn=meses[mesCurrent];
+            let catR='';let recs='\n📋 RECOMENDACIONES:\n\n';
+            Object.entries(presupuestos).forEach(([cat,pres])=>{
+                const g=gastos.filter(x=>x.categoria===cat).reduce((s,x)=>s+x.monto,0);
+                const p=pres>0?Math.round((g/pres)*100):0;
+                let est=p>100?'🚨 EXCEDIDO':p>80?'⚠️ Cuidado':p>0?'✅ OK':'— Sin gastos';
+                catR+=`  ${(emojis[cat]+' '+cat).padEnd(28)} $${g.toLocaleString('es-CO').padStart(12)}  /  $${pres.toLocaleString('es-CO').padStart(12)}  (${p}%) ${est}\n`;
+                if(p>100) recs+=`  ⚠️ ${cat}: Te pasaste $${(g-pres).toLocaleString('es-CO')}. Revisa si puedes reducir.\n`;
+            });
+            if(disp>0){
+                const ahorro20=Math.round(tI*0.2);
+                recs+=`\n  💡 Tu disponible es $${disp.toLocaleString('es-CO')}.\n  Se recomienda ahorrar mínimo 20% de tus ingresos: $${ahorro20.toLocaleString('es-CO')}\n`;
+                if(disp>=ahorro20) recs+=`  ✅ ¡Vas bien! Puedes alcanzar tu meta de ahorro.\n`;
+                else recs+=`  ⚠️ Tu disponible no alcanza el 20%. Revisa gastos no esenciales.\n`;
+            } else {
+                recs+=`\n  🚨 ¡ATENCIÓN! Tus gastos superan tus ingresos por $${Math.abs(disp).toLocaleString('es-CO')}.\n  Revisa urgentemente tus gastos.\n`;
+            }
+            const inf=`
+══════════════════════════════════════════════════════════
+          📊 INFORME FINANCIERO - ${mn.toUpperCase()} 2026
+          💰 Finanzas Maye
+══════════════════════════════════════════════════════════
+
+📅 Fecha: ${new Date().toLocaleDateString('es-CO')}
+
+━━━ RESUMEN ━━━
+
+  💵 Total Ingresos:     $${tI.toLocaleString('es-CO')}
+  💸 Total Gastos:       $${tG.toLocaleString('es-CO')}
+  💰 Disponible:         $${disp.toLocaleString('es-CO')}
 
 ━━━ INGRESOS ━━━
-${ingresos.map(i => `  • ${i.descripcion}: $${i.monto.toLocaleString('es-CO')}`).join('\n')}
 
-━━━ DEUDAS ━━━
-${deudas.length > 0 ? deudas.map(d => `  • ${d.descripcion}: $${d.monto.toLocaleString('es-CO')} (${d.estado})`).join('\n') : '  Sin deudas registradas'}
+${ingresos.map(i=>`  • ${i.descripcion}: $${i.monto.toLocaleString('es-CO')}`).join('\n')}
 
 ━━━ GASTOS POR CATEGORÍA ━━━
-${catResumen}
-${recomendaciones}
-═══════════════════════════════════════════════════
-         Generado por Finanzas Maye
-═══════════════════════════════════════════════════
+
+${catR}
+${recs}
+══════════════════════════════════════════════════════════
+          Generado por Finanzas Maye
+══════════════════════════════════════════════════════════
 `;
-            const blob = new Blob([informe], { type: 'text/plain;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Informe_Finanzas_${mesNombre}_2026.txt`;
-            a.click();
-            URL.revokeObjectURL(url);
-            mostrarToast('📊 Informe descargado');
+            const blob=new Blob([inf],{type:'text/plain;charset=utf-8'});
+            const url=URL.createObjectURL(blob);const a=document.createElement('a');
+            a.href=url;a.download=`Informe_${mn}_2026.txt`;a.click();
+            URL.revokeObjectURL(url);mostrarToast('📊 Informe descargado');
         }
 
-        // Close modals on overlay click
-        document.querySelectorAll('.modal-overlay').forEach(m => {
-            m.addEventListener('click', (e) => { if (e.target === m) m.classList.remove('activo'); });
-        });
+        document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('activo');});});
 
+        populateCatSelect();
         crearSelectoresMeses();
         actualizarUI();
     </script>
