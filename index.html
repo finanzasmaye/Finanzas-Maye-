@@ -504,7 +504,7 @@
             { monto: 8500, categoria: 'Transporte', descripcion: 'Taxi', fecha: '01/06/2026' }
         ];
 
-        let mesCurrent = 4;
+        let mesCurrent = new Date().getMonth();
 
         // Cargar gastos manuales de localStorage
         function getGastosManuales() {
