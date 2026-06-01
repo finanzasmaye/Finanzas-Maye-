@@ -235,6 +235,69 @@
             font-weight: 600;
             color: #667eea;
         }
+        .fab-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+            z-index: 999;
+            transition: all 0.3s;
+        }
+        .fab-btn:hover { transform: scale(1.1); }
+        .form-group { margin-bottom: 15px; }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        .btn-registrar {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-registrar:hover { opacity: 0.9; }
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #10b981;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            z-index: 2000;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
@@ -276,6 +339,48 @@
             <div class="categories-grid" id="categories-container"></div>
         </div>
     </div>
+
+    <div class="modal-overlay" id="modal-form">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>➕ Registrar Gasto</h2>
+                <button class="modal-close" onclick="cerrarFormulario()">✕</button>
+            </div>
+            <div class="form-group">
+                <label>💰 Monto ($)</label>
+                <input type="number" id="form-monto" placeholder="Ej: 50000">
+            </div>
+            <div class="form-group">
+                <label>📂 Categoría</label>
+                <select id="form-categoria">
+                    <option value="Arriendo">🏠 Arriendo</option>
+                    <option value="Transporte">🚗 Transporte</option>
+                    <option value="Restaurantes">🍽️ Restaurantes</option>
+                    <option value="Mercado">🛒 Mercado</option>
+                    <option value="Compras">🛍️ Compras</option>
+                    <option value="Servicios Digitales">💻 Servicios Digitales</option>
+                    <option value="Salud/Farmacia">💊 Salud/Farmacia</option>
+                    <option value="Telecomunicaciones">📱 Telecomunicaciones</option>
+                    <option value="Educación">🎓 Educación</option>
+                    <option value="Entretenimiento">🎬 Entretenimiento</option>
+                    <option value="Seguridad Social">📋 Seguridad Social</option>
+                    <option value="Otros">📦 Otros</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>📝 Descripción</label>
+                <input type="text" id="form-descripcion" placeholder="Ej: Uber al trabajo">
+            </div>
+            <div class="form-group">
+                <label>📅 Fecha</label>
+                <input type="date" id="form-fecha">
+            </div>
+            <button class="btn-registrar" onclick="registrarGasto()">✅ Registrar Gasto</button>
+        </div>
+    </div>
+
+    <button class="fab-btn" onclick="abrirFormulario()" title="Registrar Gasto">+</button>
+    <div class="toast" id="toast">✅ Gasto registrado correctamente</div>
 
     <div class="modal-overlay" id="modal">
         <div class="modal">
@@ -401,6 +506,95 @@
 
         let mesCurrent = 4;
 
+        // Cargar gastos manuales de localStorage
+        function getGastosManuales() {
+            try {
+                return JSON.parse(localStorage.getItem('gastosManuales') || '[]');
+            } catch(e) {
+                return [];
+            }
+        }
+
+        function guardarGastoManual(gasto) {
+            const gastos = getGastosManuales();
+            gastos.push(gasto);
+            localStorage.setItem('gastosManuales', JSON.stringify(gastos));
+        }
+
+        function getGastosMes(mesIndex) {
+            let gastosBase = [];
+            if (mesIndex === 4) {
+                gastosBase = [...gastosRealMayo];
+            } else if (mesIndex === 5) {
+                gastosBase = [...gastosRealJunio];
+            }
+
+            // Agregar gastos manuales del mes correspondiente
+            const manuales = getGastosManuales().filter(g => {
+                const partes = g.fecha.split('/');
+                const mesGasto = parseInt(partes[1]) - 1;
+                return mesGasto === mesIndex;
+            });
+
+            return [...gastosBase, ...manuales];
+        }
+
+        function abrirFormulario() {
+            const hoy = new Date();
+            document.getElementById('form-fecha').value = hoy.toISOString().split('T')[0];
+            document.getElementById('form-monto').value = '';
+            document.getElementById('form-descripcion').value = '';
+            document.getElementById('modal-form').classList.add('activo');
+        }
+
+        function cerrarFormulario() {
+            document.getElementById('modal-form').classList.remove('activo');
+        }
+
+        function registrarGasto() {
+            const monto = parseInt(document.getElementById('form-monto').value);
+            const categoria = document.getElementById('form-categoria').value;
+            const descripcion = document.getElementById('form-descripcion').value;
+            const fechaInput = document.getElementById('form-fecha').value;
+
+            if (!monto || monto <= 0) {
+                alert('Ingresa un monto válido');
+                return;
+            }
+            if (!descripcion) {
+                alert('Ingresa una descripción');
+                return;
+            }
+            if (!fechaInput) {
+                alert('Selecciona una fecha');
+                return;
+            }
+
+            const partesFecha = fechaInput.split('-');
+            const fecha = partesFecha[2] + '/' + partesFecha[1] + '/' + partesFecha[0];
+
+            const gasto = { monto, categoria, descripcion, fecha };
+            guardarGastoManual(gasto);
+
+            cerrarFormulario();
+
+            // Mostrar toast
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+
+            // Cambiar al mes del gasto registrado
+            const mesGasto = parseInt(partesFecha[1]) - 1;
+            mesCurrent = mesGasto;
+
+            actualizarUI();
+            crearSelectoresMeses();
+        }
+
+        document.getElementById('modal-form').addEventListener('click', (e) => {
+            if (e.target.id === 'modal-form') cerrarFormulario();
+        });
+
         function crearSelectoresMeses() {
             const selector = document.getElementById('mes-selector');
             selector.innerHTML = '';
@@ -420,12 +614,7 @@
         }
 
         function actualizarUI() {
-            let gastos = [];
-            if (mesCurrent === 4) {
-                gastos = gastosRealMayo;
-            } else if (mesCurrent === 5) {
-                gastos = gastosRealJunio;
-            }
+            const gastos = getGastosMes(mesCurrent);
             
             const totalGastado = gastos.reduce((sum, g) => sum + g.monto, 0);
             const presupuestoTotal = Object.values(presupuestos).reduce((a, b) => a + b, 0);
