@@ -302,22 +302,22 @@
 
     <script>
         const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-        const categoriasList = ['Arriendo','Transporte','Restaurantes','Mercado','Compras','Servicios Digitales','Salud/Farmacia','Telecomunicaciones','Educación','Entretenimiento','Seguridad Social','Préstamos','Cuidado Personal','Viajes','Seguros','Otros'];
-        const emojis = {'Arriendo':'🏠','Transporte':'🚗','Restaurantes':'🍽️','Mercado':'🛒','Compras':'🛍️','Servicios Digitales':'💻','Salud/Farmacia':'💊','Telecomunicaciones':'📱','Educación':'🎓','Entretenimiento':'🎬','Seguridad Social':'📋','Préstamos':'🏦','Cuidado Personal':'💅','Viajes':'✈️','Seguros':'🔒','Otros':'📦'};
+        const categoriasList = ['Arriendo','Transporte','Restaurantes','Mercado','Compras','Servicios Digitales','Salud/Farmacia','Telecomunicaciones','Educación','Entretenimiento','Seguridad Social','Préstamos','Cuidado Personal','Ropa','Viajes','Seguros','Otros'];
+        const emojis = {'Arriendo':'🏠','Transporte':'🚗','Restaurantes':'🍽️','Mercado':'🛒','Compras':'🛍️','Servicios Digitales':'💻','Salud/Farmacia':'💊','Telecomunicaciones':'📱','Educación':'🎓','Entretenimiento':'🎬','Seguridad Social':'📋','Préstamos':'🏦','Cuidado Personal':'💅','Ropa':'👗','Viajes':'✈️','Seguros':'🔒','Otros':'📦'};
 
         const presupuestos = {
             'Arriendo':1750000,'Transporte':200000,'Restaurantes':500000,'Mercado':500000,
             'Compras':300000,'Servicios Digitales':300000,'Salud/Farmacia':250000,
             'Telecomunicaciones':50000,'Educación':300000,'Entretenimiento':300000,
             'Seguridad Social':899700,'Préstamos':2100000,'Cuidado Personal':200000,
-            'Viajes':500000,'Seguros':50000,'Otros':200000
+            'Ropa':300000,'Viajes':500000,'Seguros':50000,'Otros':200000
         };
         const colores = {
             'Arriendo':'#ef4444','Transporte':'#3b82f6','Restaurantes':'#f97316','Mercado':'#22c55e',
             'Compras':'#a855f7','Servicios Digitales':'#06b6d4','Salud/Farmacia':'#10b981',
             'Telecomunicaciones':'#eab308','Educación':'#8b5cf6','Entretenimiento':'#ec4899',
             'Seguridad Social':'#6366f1','Préstamos':'#f43f5e','Cuidado Personal':'#f472b6',
-            'Viajes':'#0ea5e9','Seguros':'#78716c','Otros':'#64748b'
+            'Ropa':'#fb7185','Viajes':'#0ea5e9','Seguros':'#78716c','Otros':'#64748b'
         };
 
         const gastosRealDic2025 = [
@@ -330,7 +330,7 @@
             {monto:50000,categoria:'Restaurantes',descripcion:'RESTAURANTE LOS GERANI',fecha:'13/12/2025'},
             {monto:7900,categoria:'Mercado',descripcion:'MERCALDAS PALERMO',fecha:'13/12/2025'},
             {monto:19900,categoria:'Transporte',descripcion:'UBER  ONE MEMBERSHIP U',fecha:'14/12/2025'},
-            {monto:174618,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'15/12/2025'},
+            {monto:174618,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'15/12/2025'},
             {monto:52950,categoria:'Salud/Farmacia',descripcion:'MULTIDROGAS MANIZALES',fecha:'16/12/2025'},
             {monto:19950,categoria:'Telecomunicaciones',descripcion:'UNE TELCO UNE PAGO EXP',fecha:'17/12/2025'},
             {monto:59000,categoria:'Restaurantes',descripcion:'DRIVE IN CERRITOS',fecha:'17/12/2025'},
@@ -371,11 +371,11 @@
             {monto:144390,categoria:'Compras',descripcion:'FALABELLA COM S A S',fecha:'06/01/2026'},
             {monto:21000,categoria:'Compras',descripcion:'TJV MALL PLAZA',fecha:'10/01/2026'},
             {monto:78990,categoria:'Compras',descripcion:'TIENDA LEONISA MALL PL',fecha:'10/01/2026'},
-            {monto:88874,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'13/01/2026'},
+            {monto:88874,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'13/01/2026'},
             {monto:127500,categoria:'Mercado',descripcion:'DOLLARCITY CABLE PLAZA',fecha:'13/01/2026'},
             {monto:79900,categoria:'Compras',descripcion:'TOTTO MANIZALES CABLE',fecha:'13/01/2026'},
             {monto:89130,categoria:'Mercado',descripcion:'TIENDA D1 LA SUIZA',fecha:'13/01/2026'},
-            {monto:6807,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'13/01/2026'},
+            {monto:6807,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'13/01/2026'},
             {monto:120409,categoria:'Mercado',descripcion:'TIENDAS ARA',fecha:'13/01/2026'},
             {monto:37880,categoria:'Mercado',descripcion:'TIENDA D1 SANCANCIO',fecha:'14/01/2026'},
             {monto:19900,categoria:'Transporte',descripcion:'UBER  ONE MEMBERSHIP U',fecha:'14/01/2026'},
@@ -387,7 +387,7 @@
             {monto:21000,categoria:'Mercado',descripcion:'DOLLARCITY CABLE PLAZA',fecha:'16/01/2026'},
             {monto:50300,categoria:'Salud/Farmacia',descripcion:'MULTIDROGAS MANIZALES',fecha:'16/01/2026'},
             {monto:31000,categoria:'Restaurantes',descripcion:'PASTELERIA LA SUIZA',fecha:'16/01/2026'},
-            {monto:50428,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'17/01/2026'},
+            {monto:50428,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'17/01/2026'},
             {monto:13300,categoria:'Servicios Digitales',descripcion:'DLO GOOGLE Microsoft A',fecha:'20/01/2026'},
             {monto:32500,categoria:'Restaurantes',descripcion:'TARANTELLA COCINA PIZZ',fecha:'23/01/2026'},
             {monto:65000,categoria:'Entretenimiento',descripcion:'OPERAD TURISTICO ECOTE',fecha:'24/01/2026'},
@@ -405,9 +405,9 @@
 
         const gastosRealFeb = [
             {monto:1750000,categoria:'Arriendo',descripcion:'Arriendo mensual',fecha:'01/02/2026'},
-            {monto:10667,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'02/02/2026'},
+            {monto:10667,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'02/02/2026'},
             {monto:99804,categoria:'Compras',descripcion:'SHEIN COM',fecha:'02/02/2026'},
-            {monto:72609,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'02/02/2026'},
+            {monto:72609,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'02/02/2026'},
             {monto:3754500,categoria:'Compras',descripcion:'FALABELLA COM S A S',fecha:'03/02/2026'},
             {monto:9700,categoria:'Restaurantes',descripcion:'BOLD LABICCI Caffe',fecha:'03/02/2026'},
             {monto:55716,categoria:'Mercado',descripcion:'EXITO SANCANCIO',fecha:'03/02/2026'},
@@ -492,25 +492,25 @@
             {monto:44500,categoria:'Restaurantes',descripcion:'TARANTELLA COCINA PIZZ',fecha:'03/03/2026'},
             {monto:4240,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'04/03/2026'},
             {monto:6400,categoria:'Salud/Farmacia',descripcion:'FARMATODO EL CABLE',fecha:'04/03/2026'},
-            {monto:114887,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'05/03/2026'},
+            {monto:114887,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'05/03/2026'},
             {monto:29000,categoria:'Restaurantes',descripcion:'OLIVE COCINA SALUDABLE',fecha:'06/03/2026'},
             {monto:4161,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'06/03/2026'},
             {monto:47950,categoria:'Salud/Farmacia',descripcion:'FARMATODO EL CABLE',fecha:'06/03/2026'},
-            {monto:234251,categoria:'Compras',descripcion:'DLO SHEIN.COM',fecha:'07/03/2026'},
+            {monto:234251,categoria:'Ropa',descripcion:'DLO SHEIN.COM',fecha:'07/03/2026'},
             {monto:377600,categoria:'Compras',descripcion:'KARIBIK MALL PLAZA MAN',fecha:'07/03/2026'},
             {monto:24900,categoria:'Restaurantes',descripcion:'CALICHE CEVICHE MALL P',fecha:'07/03/2026'},
             {monto:5917,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'07/03/2026'},
-            {monto:5141,categoria:'Compras',descripcion:'DLO SHEIN.COM',fecha:'07/03/2026'},
+            {monto:5141,categoria:'Ropa',descripcion:'DLO SHEIN.COM',fecha:'07/03/2026'},
             {monto:29900,categoria:'Servicios Digitales',descripcion:'DLO GOOGLE Microsoft A',fecha:'08/03/2026'},
             {monto:358413,categoria:'Mercado',descripcion:'MERCALDAS PALMAS',fecha:'08/03/2026'},
             {monto:32440,categoria:'Salud/Farmacia',descripcion:'DROGUERIA DEP PALMAS M',fecha:'08/03/2026'},
-            {monto:11632,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'08/03/2026'},
-            {monto:375592,categoria:'Compras',descripcion:'COMPRA DLO Temu.com',fecha:'08/03/2026'},
-            {monto:7682,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'08/03/2026'},
+            {monto:11632,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'08/03/2026'},
+            {monto:375592,categoria:'Ropa',descripcion:'COMPRA DLO Temu.com',fecha:'08/03/2026'},
+            {monto:7682,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'08/03/2026'},
             {monto:10900,categoria:'Restaurantes',descripcion:'BOLD Panda Bamboo',fecha:'09/03/2026'},
             {monto:34405,categoria:'Salud/Farmacia',descripcion:'DROGUERAA PASTEUR CABL',fecha:'09/03/2026'},
             {monto:4011,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'09/03/2026'},
-            {monto:71448,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'10/03/2026'},
+            {monto:71448,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'10/03/2026'},
             {monto:10900,categoria:'Restaurantes',descripcion:'BOLD Panda Bamboo',fecha:'11/03/2026'},
             {monto:4391,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'11/03/2026'},
             {monto:27000,categoria:'Mercado',descripcion:'DOLLARCITY CABLE PLAZA',fecha:'12/03/2026'},
@@ -520,7 +520,7 @@
             {monto:52080,categoria:'Viajes',descripcion:'LATAM AIRLINES GROUP S',fecha:'13/03/2026'},
             {monto:4065,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'13/03/2026'},
             {monto:243399,categoria:'Viajes',descripcion:'AVIANCA LIFEMILES',fecha:'14/03/2026'},
-            {monto:70610,categoria:'Compras',descripcion:'DLO Temu.com',fecha:'14/03/2026'},
+            {monto:70610,categoria:'Ropa',descripcion:'DLO Temu.com',fecha:'14/03/2026'},
             {monto:19900,categoria:'Transporte',descripcion:'UBER  ONE MEMBERSHIP U',fecha:'14/03/2026'},
             {monto:39600,categoria:'Restaurantes',descripcion:'RESTAURANTE LOS GERANI',fecha:'14/03/2026'},
             {monto:4114,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'16/03/2026'},
@@ -531,7 +531,7 @@
             {monto:15401,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'19/03/2026'},
             {monto:13300,categoria:'Servicios Digitales',descripcion:'DLO GOOGLE Microsoft A',fecha:'20/03/2026'},
             {monto:23000,categoria:'Restaurantes',descripcion:'BOLD PRESTEZA RESTAURA',fecha:'20/03/2026'},
-            {monto:125335,categoria:'Compras',descripcion:'DLO SHEIN.COM',fecha:'20/03/2026'},
+            {monto:125335,categoria:'Ropa',descripcion:'DLO SHEIN.COM',fecha:'20/03/2026'},
             {monto:210400,categoria:'Compras',descripcion:'PATPRIMO 359 MANIZALEZ',fecha:'21/03/2026'},
             {monto:51400,categoria:'Restaurantes',descripcion:'CREPES Y WAFFLES MALL',fecha:'21/03/2026'},
             {monto:8572,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'21/03/2026'},
@@ -541,7 +541,7 @@
             {monto:30000,categoria:'Compras',descripcion:'MUSSI ZAPATOS',fecha:'22/03/2026'},
             {monto:57700,categoria:'Compras',descripcion:'MINISO MALL PLAZA MANI',fecha:'22/03/2026'},
             {monto:15548,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'22/03/2026'},
-            {monto:66780,categoria:'Compras',descripcion:'DLO SHEIN.COM',fecha:'24/03/2026'},
+            {monto:66780,categoria:'Ropa',descripcion:'DLO SHEIN.COM',fecha:'24/03/2026'},
             {monto:28600,categoria:'Restaurantes',descripcion:'RESTAURANTE LOS GERANI',fecha:'24/03/2026'},
             {monto:3546,categoria:'Transporte',descripcion:'UBER RIDES',fecha:'25/03/2026'},
             {monto:10900,categoria:'Restaurantes',descripcion:'BOLD Panda Bamboo',fecha:'26/03/2026'},
