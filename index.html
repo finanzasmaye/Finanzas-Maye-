@@ -168,6 +168,7 @@
         <div class="action-row">
             <button class="action-btn primary" onclick="abrirFormulario()">➕ Registrar Gasto</button>
             <button class="action-btn green" onclick="abrirFormIngreso()">💵 Agregar Ingreso</button>
+            <button class="action-btn" onclick="abrirFormCategoria()">🏷️ Crear Categoría</button>
             <button class="action-btn" onclick="descargarInforme()">📊 Descargar Informe</button>
         </div>
         <div class="metrics">
@@ -257,6 +258,33 @@
         </div>
     </div>
 
+    <!-- Modal Crear Categoría -->
+    <div class="modal-overlay" id="modal-categoria">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>🏷️ Crear Categoría</h2>
+                <button class="modal-close" onclick="cerrarModal('modal-categoria')">✕</button>
+            </div>
+            <div class="form-group">
+                <label>📝 Nombre de la categoría</label>
+                <input type="text" id="cat-nombre" placeholder="Ej: Mascotas, Viajes...">
+            </div>
+            <div class="form-group">
+                <label>😀 Emoji (opcional)</label>
+                <input type="text" id="cat-emoji" placeholder="Ej: 🐶, ✈️, 🎮..." maxlength="4">
+            </div>
+            <div class="form-group">
+                <label>💰 Presupuesto mensual ($)</label>
+                <input type="number" id="cat-presupuesto" placeholder="Ej: 200000">
+            </div>
+            <div class="form-group">
+                <label>🎨 Color</label>
+                <input type="color" id="cat-color" value="#8b5cf6" style="height:45px;padding:5px;">
+            </div>
+            <button class="btn-submit" onclick="crearCategoria()">🏷️ Crear Categoría</button>
+        </div>
+    </div>
+
     <!-- Modal Detalle Categoría -->
     <div class="modal-overlay" id="modal">
         <div class="modal">
@@ -274,20 +302,20 @@
 
     <script>
         const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-        const categoriasList = ['Arriendo','Transporte','Restaurantes','Mercado','Compras','Servicios Digitales','Salud/Farmacia','Telecomunicaciones','Educación','Entretenimiento','Seguridad Social','Préstamos','Otros'];
-        const emojis = {'Arriendo':'🏠','Transporte':'🚗','Restaurantes':'🍽️','Mercado':'🛒','Compras':'🛍️','Servicios Digitales':'💻','Salud/Farmacia':'💊','Telecomunicaciones':'📱','Educación':'🎓','Entretenimiento':'🎬','Seguridad Social':'📋','Préstamos':'🏦','Otros':'📦'};
+        const categoriasList = ['Arriendo','Transporte','Restaurantes','Mercado','Compras','Servicios Digitales','Salud/Farmacia','Telecomunicaciones','Educación','Entretenimiento','Seguridad Social','Préstamos','Cuidado Personal','Otros'];
+        const emojis = {'Arriendo':'🏠','Transporte':'🚗','Restaurantes':'🍽️','Mercado':'🛒','Compras':'🛍️','Servicios Digitales':'💻','Salud/Farmacia':'💊','Telecomunicaciones':'📱','Educación':'🎓','Entretenimiento':'🎬','Seguridad Social':'📋','Préstamos':'🏦','Cuidado Personal':'💅','Otros':'📦'};
 
         const presupuestos = {
             'Arriendo':1750000,'Transporte':200000,'Restaurantes':500000,'Mercado':500000,
             'Compras':300000,'Servicios Digitales':300000,'Salud/Farmacia':250000,
             'Telecomunicaciones':50000,'Educación':300000,'Entretenimiento':300000,
-            'Seguridad Social':899700,'Préstamos':2100000,'Otros':200000
+            'Seguridad Social':899700,'Préstamos':2100000,'Cuidado Personal':200000,'Otros':200000
         };
         const colores = {
             'Arriendo':'#ef4444','Transporte':'#3b82f6','Restaurantes':'#f97316','Mercado':'#22c55e',
             'Compras':'#a855f7','Servicios Digitales':'#06b6d4','Salud/Farmacia':'#10b981',
             'Telecomunicaciones':'#eab308','Educación':'#8b5cf6','Entretenimiento':'#ec4899',
-            'Seguridad Social':'#6366f1','Préstamos':'#f43f5e','Otros':'#64748b'
+            'Seguridad Social':'#6366f1','Préstamos':'#f43f5e','Cuidado Personal':'#f472b6','Otros':'#64748b'
         };
 
         const gastosRealMayo = [
@@ -360,7 +388,54 @@
         const ingresosBase = { 4:[{descripcion:'Salario',monto:6000000}], 5:[{descripcion:'Salario',monto:6000000}] };
 
         let mesCurrent = new Date().getMonth();
-        let editIndex = -1; // -1 = nuevo, >= 0 = editando
+        let editIndex = -1;
+
+        // Cargar categorías personalizadas de localStorage
+        function cargarCategoriasCustom() {
+            const custom = getLS('categoriasCustom');
+            custom.forEach(c => {
+                if (!categoriasList.includes(c.nombre)) {
+                    categoriasList.splice(categoriasList.length - 1, 0, c.nombre); // antes de "Otros"
+                    presupuestos[c.nombre] = c.presupuesto;
+                    colores[c.nombre] = c.color;
+                    emojis[c.nombre] = c.emoji || '📌';
+                }
+            });
+        }
+
+        function abrirFormCategoria() {
+            document.getElementById('cat-nombre').value = '';
+            document.getElementById('cat-emoji').value = '';
+            document.getElementById('cat-presupuesto').value = '';
+            document.getElementById('cat-color').value = '#8b5cf6';
+            document.getElementById('modal-categoria').classList.add('activo');
+        }
+
+        function crearCategoria() {
+            const nombre = document.getElementById('cat-nombre').value.trim();
+            const emoji = document.getElementById('cat-emoji').value.trim() || '📌';
+            const presupuesto = parseInt(document.getElementById('cat-presupuesto').value);
+            const color = document.getElementById('cat-color').value;
+            if (!nombre) return alert('Ingresa un nombre');
+            if (!presupuesto || presupuesto <= 0) return alert('Ingresa un presupuesto válido');
+            if (categoriasList.includes(nombre)) return alert('Esa categoría ya existe');
+
+            // Agregar a las listas
+            categoriasList.splice(categoriasList.length - 1, 0, nombre);
+            presupuestos[nombre] = presupuesto;
+            colores[nombre] = color;
+            emojis[nombre] = emoji;
+
+            // Guardar en localStorage
+            const custom = getLS('categoriasCustom');
+            custom.push({ nombre, emoji, presupuesto, color });
+            setLS('categoriasCustom', custom);
+
+            cerrarModal('modal-categoria');
+            populateCatSelect();
+            mostrarToast('🏷️ Categoría "' + nombre + '" creada');
+            actualizarUI();
+        } // -1 = nuevo, >= 0 = editando
 
         // === LOCALSTORAGE ===
         function getLS(k){try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return[]}}
@@ -614,6 +689,7 @@ ${recs}
 
         document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('activo');});});
 
+        cargarCategoriasCustom();
         populateCatSelect();
         crearSelectoresMeses();
         actualizarUI();
