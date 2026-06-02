@@ -781,6 +781,23 @@
         }
 
         function getGastosMes(mes) {
+            if (mes === -1) {
+                // Todos los meses
+                let todos = [];
+                [11,0,1,2,3,4,5].forEach(m => {
+                    let base = [];
+                    if (m===11) base=[...gastosRealDic2025];
+                    else if (m===0) base=[...gastosRealEne];
+                    else if (m===1) base=[...gastosRealFeb];
+                    else if (m===2) base=[...gastosRealMar];
+                    else if (m===3) base=[...gastosRealAbr];
+                    else if (m===4) base=[...gastosRealMayo];
+                    else if (m===5) base=[...gastosRealJunio];
+                    todos = [...todos, ...base];
+                });
+                const man = getLS('gastosManuales');
+                return aplicarOverrides([...todos, ...man]);
+            }
             let base = [];
             if (mes===11) base=[...gastosRealDic2025];
             else if (mes===0) base=[...gastosRealEne];
@@ -793,6 +810,16 @@
             return aplicarOverrides([...base, ...man]);
         }
         function getIngresosMes(mes) {
+            if (mes === -1) {
+                // Todos los meses con datos
+                let todos = [];
+                [11,0,1,2,3,4,5].forEach(m => {
+                    const base = ingresosBase[m]?[...ingresosBase[m]]:[{descripcion:'Salario',monto:6000000}];
+                    const extras = getLS('ingresosExtra').filter(i=>i.mes===m);
+                    todos = [...todos, ...base, ...extras];
+                });
+                return todos;
+            }
             const base = ingresosBase[mes]?[...ingresosBase[mes]]:[{descripcion:'Salario',monto:6000000}];
             return [...base, ...getLS('ingresosExtra').filter(i=>i.mes===mes)];
         }
@@ -800,6 +827,14 @@
         // === SELECTORES ===
         function crearSelectoresMeses() {
             const sel = document.getElementById('mes-selector'); sel.innerHTML = '';
+            // Botón AÑO
+            const btnYear = document.createElement('button');
+            btnYear.className = 'mes-btn' + (mesCurrent === -1 ? ' activo' : '');
+            btnYear.textContent = '📅 Año';
+            btnYear.style.cssText = mesCurrent === -1 ? '' : 'border-color:rgba(234,179,8,0.5);color:#fde047;';
+            btnYear.onclick = () => { mesCurrent = -1; actualizarUI(); crearSelectoresMeses(); };
+            sel.appendChild(btnYear);
+
             meses.forEach((m,i)=>{
                 const b=document.createElement('button');
                 b.className='mes-btn'+(i===mesCurrent?' activo':'');
