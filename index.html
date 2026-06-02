@@ -757,8 +757,8 @@
         function getLSObj(k){try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return{}}}
         function setLSObj(k,v){localStorage.setItem(k,JSON.stringify(v))}
 
-        // ID único para cada gasto
-        function gastoId(g){return g.monto+'_'+g.descripcion+'_'+g.fecha;}
+        // ID único para cada gasto (sin caracteres especiales)
+        function gastoId(g){return btoa(unescape(encodeURIComponent(g.monto+'_'+g.descripcion+'_'+g.fecha))).replace(/[^a-zA-Z0-9]/g,'');}
 
         // Overrides de categoría
         function getCatOverrides(){return getLSObj('catOverrides');}
@@ -767,6 +767,9 @@
             ov[id]=newCat;
             setLSObj('catOverrides',ov);
         }
+
+        // Almacenar gastos temporalmente para referencia
+        let gastosActuales = [];
 
         function aplicarOverrides(gastos){
             const ov=getCatOverrides();
@@ -869,12 +872,10 @@
             else if(gastado>0){const f=pres-gastado;html+=`<div style="background:rgba(16,185,129,0.15);border:1px solid #10b981;padding:12px;border-radius:8px;margin-bottom:15px;color:#6ee7b7;">✅ <strong>Te falta:</strong> $${f.toLocaleString('es-CO')} para agotar tu presupuesto</div>`;}
             if(gc.length===0){html+='<p style="text-align:center;color:#64748b;padding:15px;">Sin gastos en esta categoría</p>';}
             else{
-                html+=gc.map(g=>{
+                html+=gc.map((g,i)=>{
                     const manIdx=esGastoManual(g);
-                    const gId=gastoId(g);
                     const editDel=manIdx>=0?`<button class="btn-edit" onclick="editarGasto(${manIdx})" title="Editar">✏️</button><button class="btn-delete" onclick="eliminarGasto(${manIdx})" title="Eliminar">🗑️</button>`:'';
-                    const cambiarBtn=`<button class="btn-edit" onclick="mostrarCambioCat('${gId}')" title="Cambiar categoría">🔄</button>`;
-                    return `<div class="modal-item" id="item_${gId}"><div class="modal-item-desc">${g.descripcion}<br><span style="font-size:10px;color:#475569;">${g.fecha}</span></div><div style="display:flex;align-items:center;"><div class="modal-item-actions">${cambiarBtn}${editDel}</div><div class="modal-item-monto">$${g.monto.toLocaleString('es-CO')}</div></div></div>`;
+                    return `<div class="modal-item" id="mi_${i}"><div class="modal-item-desc">${g.descripcion}<br><span style="font-size:10px;color:#475569;">${g.fecha}</span></div><div style="display:flex;align-items:center;gap:6px;"><button class="btn-edit" onclick="mostrarCambioCat(${i},'${cat}')" title="Cambiar categoría">🔄</button>${editDel}<div class="modal-item-monto">$${g.monto.toLocaleString('es-CO')}</div></div></div>`;
                 }).join('');
             }
             document.getElementById('modal-items-list').innerHTML=html;
@@ -886,30 +887,38 @@
             return manuales.findIndex(m=>m.monto===gasto.monto&&m.descripcion===gasto.descripcion&&m.fecha===gasto.fecha);
         }
 
-        function mostrarCambioCat(gId) {
-            const el = document.getElementById('item_'+gId);
-            if (!el) return;
-            // Check if dropdown already exists
-            if (el.querySelector('.cat-dropdown')) return;
-            const opts = categoriasList.map(c => `<option value="${c}">${emojis[c]||''} ${c}</option>`).join('');
+        function mostrarCambioCat(idx, catActual) {
+            const el = document.getElementById('mi_'+idx);
+            if (!el || el.querySelector('.cat-dropdown')) return;
+            const gastos = getGastosMes(mesCurrent);
+            const gc = gastos.filter(g => g.categoria === catActual);
+            const g = gc[idx];
+            if (!g) return;
+            const gId = gastoId(g);
+            const opts = categoriasList.map(c => `<option value="${c}" ${c===catActual?'selected':''}>${emojis[c]||''} ${c}</option>`).join('');
             const dropdown = document.createElement('div');
             dropdown.className = 'cat-dropdown';
-            dropdown.style.cssText = 'margin-top:8px;display:flex;gap:6px;align-items:center;';
+            dropdown.style.cssText = 'margin-top:8px;display:flex;gap:6px;align-items:center;width:100%;';
             dropdown.innerHTML = `
-                <select id="sel_${gId}" style="flex:1;padding:6px 8px;border:1px solid rgba(255,255,255,0.2);background:#0f172a;color:#f8fafc;border-radius:6px;font-size:12px;font-family:'DM Sans',sans-serif;">${opts}</select>
-                <button onclick="confirmarCambioCat('${gId}')" style="padding:6px 12px;background:#6366f1;color:white;border:none;border-radius:6px;font-size:12px;cursor:pointer;font-weight:600;">✅</button>
-                <button onclick="this.parentElement.remove()" style="padding:6px 8px;background:rgba(255,255,255,0.1);color:#94a3b8;border:none;border-radius:6px;font-size:12px;cursor:pointer;">✕</button>
+                <select id="sel_${idx}" style="flex:1;padding:8px;border:1px solid rgba(255,255,255,0.2);background:#0f172a;color:#f8fafc;border-radius:6px;font-size:13px;font-family:'DM Sans',sans-serif;">${opts}</select>
+                <button onclick="confirmarCambioCat(${idx},'${catActual}')" style="padding:8px 14px;background:#6366f1;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:600;">✅</button>
+                <button onclick="this.parentElement.remove()" style="padding:8px 10px;background:rgba(255,255,255,0.1);color:#94a3b8;border:none;border-radius:6px;font-size:13px;cursor:pointer;">✕</button>
             `;
             el.appendChild(dropdown);
         }
 
-        function confirmarCambioCat(gId) {
-            const sel = document.getElementById('sel_'+gId);
+        function confirmarCambioCat(idx, catActual) {
+            const sel = document.getElementById('sel_'+idx);
             if (!sel) return;
             const newCat = sel.value;
+            const gastos = getGastosMes(mesCurrent);
+            const gc = gastos.filter(g => g.categoria === catActual);
+            const g = gc[idx];
+            if (!g) return;
+            const gId = gastoId(g);
             setCatOverride(gId, newCat);
             cerrarModal('modal');
-            mostrarToast('🔄 Categoría cambiada a ' + newCat);
+            mostrarToast('🔄 Movido a ' + (emojis[newCat]||'') + ' ' + newCat);
             actualizarUI();
         }
 
