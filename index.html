@@ -905,6 +905,7 @@
             const c=document.getElementById('categories-container');c.innerHTML='';
             Object.entries(presupuestos).forEach(([cat,pres])=>{
                 const g=gastos.filter(x=>x.categoria===cat).reduce((s,x)=>s+x.monto,0);
+                if(g===0) return; // Ocultar categorías sin gastos
                 const p=pres>0?Math.round((g/pres)*100):0;
                 const col=colores[cat];
                 const card=document.createElement('div');card.className='category-card';
