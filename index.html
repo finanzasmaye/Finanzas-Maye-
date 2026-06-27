@@ -302,22 +302,22 @@
 
     <script>
         const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-        const categoriasList = ['Arriendo','Transporte','Restaurantes','Mercado','Compras','Servicios Digitales','Salud/Farmacia','Telecomunicaciones','Educación','Entretenimiento','Seguridad Social','Préstamos','Cuidado Personal','Ropa','Familia','Gastos Urgentes','Viaje México','Viaje Brasil','Seguros','Otros'];
-        const emojis = {'Arriendo':'🏠','Transporte':'🚗','Restaurantes':'🍽️','Mercado':'🛒','Compras':'🛍️','Servicios Digitales':'💻','Salud/Farmacia':'💊','Telecomunicaciones':'📱','Educación':'🎓','Entretenimiento':'🎬','Seguridad Social':'📋','Préstamos':'🏦','Cuidado Personal':'💅','Ropa':'👗','Familia':'👨‍👩‍👧','Gastos Urgentes':'🚨','Viaje México':'🇲🇽','Viaje Brasil':'🇧🇷','Seguros':'🔒','Otros':'📦'};
+        const categoriasList = ['Arriendo','Transporte','Restaurantes','Mercado','Compras','Servicios Digitales','Salud/Farmacia','Telecomunicaciones','Educación','Entretenimiento','Seguridad Social','Préstamos','Cuidado Personal','Ropa','Familia','Gastos Urgentes','Impuestos','Viaje México','Viaje Brasil','Seguros','Otros'];
+        const emojis = {'Arriendo':'🏠','Transporte':'🚗','Restaurantes':'🍽️','Mercado':'🛒','Compras':'🛍️','Servicios Digitales':'💻','Salud/Farmacia':'💊','Telecomunicaciones':'📱','Educación':'🎓','Entretenimiento':'🎬','Seguridad Social':'📋','Préstamos':'🏦','Cuidado Personal':'💅','Ropa':'👗','Familia':'👨‍👩‍👧','Gastos Urgentes':'🚨','Impuestos':'🏛️','Viaje México':'🇲🇽','Viaje Brasil':'🇧🇷','Seguros':'🔒','Otros':'📦'};
 
         const presupuestos = {
             'Arriendo':1750000,'Transporte':200000,'Restaurantes':500000,'Mercado':500000,
             'Compras':300000,'Servicios Digitales':300000,'Salud/Farmacia':250000,
             'Telecomunicaciones':50000,'Educación':300000,'Entretenimiento':300000,
             'Seguridad Social':899700,'Préstamos':2100000,'Cuidado Personal':200000,
-            'Ropa':300000,'Familia':300000,'Gastos Urgentes':200000,'Viaje México':500000,'Viaje Brasil':2000000,'Seguros':50000,'Otros':200000
+            'Ropa':300000,'Familia':300000,'Gastos Urgentes':200000,'Impuestos':100000,'Viaje México':500000,'Viaje Brasil':2000000,'Seguros':50000,'Otros':200000
         };
         const colores = {
             'Arriendo':'#ef4444','Transporte':'#3b82f6','Restaurantes':'#f97316','Mercado':'#22c55e',
             'Compras':'#a855f7','Servicios Digitales':'#06b6d4','Salud/Farmacia':'#10b981',
             'Telecomunicaciones':'#eab308','Educación':'#8b5cf6','Entretenimiento':'#ec4899',
             'Seguridad Social':'#6366f1','Préstamos':'#f43f5e','Cuidado Personal':'#f472b6',
-            'Ropa':'#fb7185','Familia':'#c084fc','Gastos Urgentes':'#ef4444','Viaje México':'#0ea5e9','Viaje Brasil':'#14b8a6','Seguros':'#78716c','Otros':'#64748b'
+            'Ropa':'#fb7185','Familia':'#c084fc','Gastos Urgentes':'#ef4444','Impuestos':'#94a3b8','Viaje México':'#0ea5e9','Viaje Brasil':'#14b8a6','Seguros':'#78716c','Otros':'#64748b'
         };
 
         const gastosRealDic2025 = [
@@ -733,6 +733,11 @@
             {monto:31500,categoria:'Mercado',descripcion:'DollarCity Cable Plaza',fecha:'15/06/2026'},
             {monto:421951,categoria:'Préstamos',descripcion:'Abono crédito Bancolombia',fecha:'16/06/2026'},
             {monto:28000,categoria:'Restaurantes',descripcion:'Almuerzo',fecha:'17/06/2026'},
+            {monto:21640,categoria:'Impuestos',descripcion:'Cuota manejo cupo rotativo',fecha:'17/06/2026'},
+            {monto:21640,categoria:'Impuestos',descripcion:'Cuota manejo cupo rotativo',fecha:'17/06/2026'},
+            {monto:4112,categoria:'Impuestos',descripcion:'IVA cuota manejo',fecha:'17/06/2026'},
+            {monto:4112,categoria:'Impuestos',descripcion:'IVA cuota manejo',fecha:'17/06/2026'},
+            {monto:3139,categoria:'Impuestos',descripcion:'Gravamen 4x1000',fecha:'17/06/2026'},
             {monto:43300,categoria:'Restaurantes',descripcion:'Almuerzo',fecha:'23/06/2026'},
             {monto:24500,categoria:'Otros',descripcion:'Pago oficina',fecha:'23/06/2026'},
             {monto:89160,categoria:'Mercado',descripcion:'Tiendas ARA',fecha:'17/06/2026'},
