@@ -738,6 +738,9 @@
             {monto:123090,categoria:'Ropa',descripcion:'DLO Temu',fecha:'19/06/2026'},
             {monto:68248,categoria:'Ropa',descripcion:'DLO Temu',fecha:'21/06/2026'},
             {monto:13300,categoria:'Entretenimiento',descripcion:'Google Play YouTube',fecha:'23/06/2026'},
+            {monto:170000,categoria:'Ropa',descripcion:'Falabella',fecha:'28/06/2026'},
+            {monto:8000,categoria:'Transporte',descripcion:'Taxi',fecha:'28/06/2026'},
+            {monto:3000,categoria:'Transporte',descripcion:'Buseta',fecha:'28/06/2026'}
             {monto:28000,categoria:'Restaurantes',descripcion:'Almuerzo',fecha:'17/06/2026'},
             {monto:21640,categoria:'Impuestos',descripcion:'Cuota manejo cupo rotativo',fecha:'17/06/2026'},
             {monto:21640,categoria:'Impuestos',descripcion:'Cuota manejo cupo rotativo',fecha:'17/06/2026'},
@@ -789,7 +792,33 @@
 
         
 
-        const ingresosBase = { 11:[{descripcion:'Salario',monto:6000000}], 0:[{descripcion:'Salario',monto:6000000}], 1:[{descripcion:'Salario',monto:6000000}], 2:[{descripcion:'Salario',monto:6000000}], 3:[{descripcion:'Salario',monto:6000000}], 4:[{descripcion:'Salario',monto:6000000}], 5:[{descripcion:'Salario',monto:6000000},{descripcion:'Transferencia Luis Zulu',monto:1000000}] };
+        const gastosRealJulio = [
+            {monto:15954,categoria:'Transporte',descripcion:'Uber Rides',fecha:'05/07/2026'},
+            {monto:16936,categoria:'Transporte',descripcion:'Uber Rides',fecha:'05/07/2026'},
+            {monto:31000,categoria:'Restaurantes',descripcion:'Almuerzo',fecha:'06/07/2026'},
+            {monto:22000,categoria:'Restaurantes',descripcion:'Almuerzo',fecha:'07/07/2026'},
+            {monto:8000,categoria:'Restaurantes',descripcion:'Capuchino',fecha:'07/07/2026'},
+            {monto:6271,categoria:'Transporte',descripcion:'Uber Rides',fecha:'07/07/2026'},
+            {monto:18000,categoria:'Restaurantes',descripcion:'Almuerzo',fecha:'08/07/2026'},
+            {monto:6259,categoria:'Transporte',descripcion:'Uber Rides',fecha:'08/07/2026'},
+            {monto:30000,categoria:'Restaurantes',descripcion:'Almuerzo',fecha:'09/07/2026'},
+            {monto:30000,categoria:'Restaurantes',descripcion:'Comida',fecha:'09/07/2026'},
+            {monto:88000,categoria:'Restaurantes',descripcion:'Cocteles',fecha:'09/07/2026'},
+            {monto:6257,categoria:'Transporte',descripcion:'Uber Rides',fecha:'10/07/2026'},
+            {monto:8937,categoria:'Transporte',descripcion:'Uber Rides',fecha:'10/07/2026'},
+            {monto:20000,categoria:'Transporte',descripcion:'Taxi a voleyball',fecha:'10/07/2026'},
+            {monto:70000,categoria:'Entretenimiento',descripcion:'Mensualidad voleyball',fecha:'10/07/2026'},
+            {monto:7000,categoria:'Mercado',descripcion:'Agua',fecha:'10/07/2026'},
+            {monto:29000,categoria:'Restaurantes',descripcion:'Almuerzo',fecha:'10/07/2026'},
+            {monto:35000,categoria:'Restaurantes',descripcion:'Comida',fecha:'10/07/2026'},
+            {monto:23000,categoria:'Restaurantes',descripcion:'Almuerzo',fecha:'10/07/2026'},
+            {monto:1750000,categoria:'Arriendo',descripcion:'Arriendo mensual',fecha:'01/07/2026'},
+            {monto:6254,categoria:'Transporte',descripcion:'Uber Rides',fecha:'14/07/2026'},
+            {monto:6682,categoria:'Transporte',descripcion:'Uber Rides',fecha:'14/07/2026'},
+            {monto:30000,categoria:'Transporte',descripcion:'Taxis',fecha:'14/07/2026'}
+        ];
+
+        const ingresosBase = { 11:[{descripcion:'Salario',monto:6000000}], 0:[{descripcion:'Salario',monto:6000000}], 1:[{descripcion:'Salario',monto:6000000}], 2:[{descripcion:'Salario',monto:6000000}], 3:[{descripcion:'Salario',monto:6000000}], 4:[{descripcion:'Salario',monto:6000000}], 5:[{descripcion:'Salario',monto:6000000},{descripcion:'Transferencia Luis Zulu',monto:1000000}], 6:[{descripcion:'Salario',monto:6000000}] };
 
         let mesCurrent = new Date().getMonth();
         let editIndex = -1;
@@ -874,7 +903,7 @@
             if (mes === -1) {
                 // Todos los meses
                 let todos = [];
-                [11,0,1,2,3,4,5].forEach(m => {
+                [11,0,1,2,3,4,5,6].forEach(m => {
                     let base = [];
                     if (m===11) base=[...gastosRealDic2025];
                     else if (m===0) base=[...gastosRealEne];
@@ -883,6 +912,7 @@
                     else if (m===3) base=[...gastosRealAbr];
                     else if (m===4) base=[...gastosRealMayo];
                     else if (m===5) base=[...gastosRealJunio];
+                    else if (m===6) base=[...gastosRealJulio];
                     todos = [...todos, ...base];
                 });
                 const man = getLS('gastosManuales');
@@ -896,6 +926,7 @@
             else if (mes===3) base=[...gastosRealAbr];
             else if (mes===4) base=[...gastosRealMayo];
             else if (mes===5) base=[...gastosRealJunio];
+            else if (mes===6) base=[...gastosRealJulio];
             const man = getLS('gastosManuales').filter(g=>{const p=g.fecha.split('/');return(parseInt(p[1])-1)===mes;});
             return aplicarOverrides([...base, ...man]);
         }
@@ -903,7 +934,7 @@
             if (mes === -1) {
                 // Todos los meses con datos
                 let todos = [];
-                [11,0,1,2,3,4,5].forEach(m => {
+                [11,0,1,2,3,4,5,6].forEach(m => {
                     const base = ingresosBase[m]?[...ingresosBase[m]]:[{descripcion:'Salario',monto:6000000}];
                     const extras = getLS('ingresosExtra').filter(i=>i.mes===m);
                     todos = [...todos, ...base, ...extras];
